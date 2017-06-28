@@ -1,7 +1,9 @@
+var width = 960,
+    height = 600;
 
-var svg = d3.select("svg"),
-    width = +svg.attr("width"),
-    height = +svg.attr("height");
+var svg = d3.select('body').append('svg')
+    .attr('width', width)
+    .attr('height', height);
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -9,6 +11,11 @@ var simulation = d3.forceSimulation()
     .force("link", d3.forceLink().id(function(d) { return d.id; }))
     .force("charge", d3.forceManyBody())
     .force("center", d3.forceCenter(width / 2, height / 2));
+
+d3.csv("../data/Edges-Dependencies.csv", function(error, data) {
+  
+}
+);
 
 d3.json("../data/miserables.json", function(error, graph) {
   if (error) throw error;
