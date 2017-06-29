@@ -1,0 +1,16 @@
+{
+	"nodes": [
+	{"id": 1, "name": "CP", "group": 1},
+	{"id": 2, "name": "M2", "group": 1},
+	{"id": 3, "name": "PnS", "group": 1},
+	{"id": 4, "name": "LiCS", "group": 2},
+	{"id": 5, "name": "DSA", "group": 2},
+	{"id": 6, "name": "CC", "group": 3}
+	],
+	"links": [
+		{"source": 1, "target": 4},
+		{"source": 2, "target": 4},
+		{"source": 1, "target": 5},
+		{"source": 4, "target": 6}
+	]
+}
