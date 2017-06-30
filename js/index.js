@@ -81,6 +81,44 @@ function dragended(d) {
   d.fy = null;
 }
 
+simulation.on("end", function() {
+  var nodePos=simulation.nodes();  
+  var trace = new Array();
+
+  var i;
+  for(i=0;i<nodePos.length;i++)
+  {
+    trace[i]={
+    x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].y],
+    mode: 'lines+markers',
+    line: {
+      color: 10, 
+      width: 2
+    },
+    marker: {
+      size: 12,
+      line: {
+      color: 'rgba(217, 217, 217, 0.14)',
+      width: 0.5},
+      opacity: 0.8},
+    type: 'scatter3d'
+  };
+  }
+
+  var data = new Array();
+  for(i=0;i<nodePos.length;i++)
+  {
+    data.push(trace[i]);
+  }
+  var layout = {margin: {
+    l: 0,
+    r: 0,
+    b: 0,
+    t: 0
+    }};
+  Plotly.newPlot('myDiv', data, layout);
+});
+
 function isolate(force, nodes, filter) {
   var initialize = force.initialize;
   force.initialize = function() { initialize.call(force, nodes.filter(filter)); };
