@@ -21,20 +21,18 @@ d3.json("../data/smalldep.json", function(error, graph) {
     .links(graph.links);
 });
 
-simulation.on("end", function() {
-  console.log(simulation.nodes());
-});
 
 simulation.on("end", function() {
   var nodePos=simulation.nodes();  
+  console.log(nodePos);
   var trace = new Array();
 
   var i;
   for(i=0;i<nodePos.length;i++)
   {
     trace[i]={
-    x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].y],
-    mode: 'lines+markers',
+    x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].z],
+    mode: 'markers',
     line: {
       color: 10, 
       width: 2
