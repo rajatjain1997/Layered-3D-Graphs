@@ -4,7 +4,7 @@ var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
 
-d3.json("../data/smalldep.json", function(error, graph) {
+d3.json("../data/names.json", function(error, graph) {
   if (error) throw error;
 
   var i;
@@ -34,13 +34,9 @@ d3.json("../data/smalldep.json", function(error, graph) {
     .links(graph.links);
 });
 
-// simulation.on("tick", function() {
-//   console.log(simulation.nodes());
-// })
-
 simulation.on("end", function() {
   var nodePos=simulation.nodes();  
-  console.log(nodePos);
+  console.log(simulation.force("link").links()[0].source);
   var trace = new Array();
 
   var i;
