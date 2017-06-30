@@ -1,0 +1,1720 @@
+{
+   "nodes": [
+ {
+   "id": 1,
+   "name": "probability",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 2,
+   "name": "gamma function",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 3,
+   "name": "functions of several variables",
+   "fz": 2,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 4,
+   "name": "vectors",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 5,
+   "name": "loss function",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 6,
+   "name": "multinomial coefficients",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 7,
+   "name": "equivalence relations",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 8,
+   "name": "complex numbers",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 9,
+   "name": "Hopfield networks",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 10,
+   "name": "asymptotic complexity",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 11,
+   "name": "propositional logic",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 12,
+   "name": "Turing machines",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 13,
+   "name": "conditional probability",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 14,
+   "name": "random variables",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 15,
+   "name": "partial derivatives",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 16,
+   "name": "multiple integrals",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 17,
+   "name": "dot product",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 18,
+   "name": "linear systems as matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 19,
+   "name": "limits and continuity in R^n",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 20,
+   "name": "subspaces",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 21,
+   "name": "vector spaces",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 22,
+   "name": "vector fields",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 23,
+   "name": "line integrals",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 24,
+   "name": "topology of R^n",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 25,
+   "name": "roots of polynomials",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 26,
+   "name": "unions of events",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 27,
+   "name": "propositional satisfiability",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 28,
+   "name": "nondeterministic Turing machines",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 29,
+   "name": "Bayes' rule",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 30,
+   "name": "optimization problems",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 31,
+   "name": "multivariate distributions",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 32,
+   "name": "expectation and variance",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 33,
+   "name": "independent events",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 34,
+   "name": "matrix multiplication",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 35,
+   "name": "cumulative distribution function",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 36,
+   "name": "linear approximation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 37,
+   "name": "bases",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 38,
+   "name": "Gaussian elimination",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 39,
+   "name": "column space and nullspace",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 40,
+   "name": "linear transformations as matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 41,
+   "name": "cross product",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 42,
+   "name": "evaluating multiple integrals: polar coordinates",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 43,
+   "name": "inner product",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 44,
+   "name": "convex sets",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 45,
+   "name": "NP complexity class",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 46,
+   "name": "conditional distributions",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 47,
+   "name": "beta distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 48,
+   "name": "independent random variables",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 49,
+   "name": "Gaussian distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 50,
+   "name": "conditional independence",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 51,
+   "name": "linear regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 52,
+   "name": "matrix inverse",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 53,
+   "name": "matrix transpose",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 54,
+   "name": "higher-order partial derivatives",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 55,
+   "name": "gradient",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 56,
+   "name": "binomial distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 57,
+   "name": "gamma distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 58,
+   "name": "Monte Carlo estimation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 59,
+   "name": "Chain Rule",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 60,
+   "name": "differentiable manifolds",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 61,
+   "name": "dual space",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 62,
+   "name": "surface integrals",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 63,
+   "name": "parameterizing lines and planes",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 64,
+   "name": "computing the nullspace",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 65,
+   "name": "solution sets of linear systems",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 66,
+   "name": "exponential distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 67,
+   "name": "Markov and Chebyshev inequalities",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 68,
+   "name": "NP-completeness",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 69,
+   "name": "Markov decision process (MDP)",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 70,
+   "name": "Bayesian parameter estimation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 71,
+   "name": "maximum likelihood",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 72,
+   "name": "Bayesian networks",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 73,
+   "name": "Markov chains",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 74,
+   "name": "covariance",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 75,
+   "name": "determinant",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 76,
+   "name": "positive definite matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 77,
+   "name": "binary linear classifiers",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 78,
+   "name": "Taylor approximations",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 79,
+   "name": "probit function",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 80,
+   "name": "gradient descent",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 81,
+   "name": "generalization",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 82,
+   "name": "multinomial distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 83,
+   "name": "exponential families",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 84,
+   "name": "Student-t distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 85,
+   "name": "Poisson distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 86,
+   "name": "Markov random fields",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 87,
+   "name": "four fundamental subspaces",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 88,
+   "name": "change of basis",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 89,
+   "name": "basis function expansions",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 90,
+   "name": "importance sampling",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 91,
+   "name": "Lagrange multipliers",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 92,
+   "name": "entropy",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 93,
+   "name": "conservative vector fields",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 94,
+   "name": "differentiable maps between manifolds",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 95,
+   "name": "tensors",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 96,
+   "name": "Divergence Theorem",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 97,
+   "name": "complex vectors and matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 98,
+   "name": "computing matrix inverses",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 99,
+   "name": "LU factorization",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 100,
+   "name": "moment generating functions",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 101,
+   "name": "multivariate CDF",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 102,
+   "name": "rejection sampling",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 103,
+   "name": "transformation method",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 104,
+   "name": "weak law of large numbers",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 105,
+   "name": "Bayes net parameter learning",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 106,
+   "name": "Markov models",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 107,
+   "name": "linear regression as maximum likelihood",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 108,
+   "name": "covariance matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 109,
+   "name": "Bayesian decision theory",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 110,
+   "name": "ridge regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 111,
+   "name": "Bayesian model comparison",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 112,
+   "name": "MAP parameter estimation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 113,
+   "name": "naive Bayes",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 114,
+   "name": "Bayesian parameter estimation: multinomial distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 115,
+   "name": "Bayesian parameter estimation in exponential families",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 116,
+   "name": "Bayesian parameter estimation: Gaussian distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 117,
+   "name": "Dirichlet distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 118,
+   "name": "Markov chain Monte Carlo",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 119,
+   "name": "eigenvalues and eigenvectors",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 120,
+   "name": "orthogonal subspaces",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 121,
+   "name": "uninformative priors",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 122,
+   "name": "Fisher information",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 123,
+   "name": "hidden Markov models",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 124,
+   "name": "PDFs of functions of random variables",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 125,
+   "name": "KL divergence",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 126,
+   "name": "determinant and volume",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 127,
+   "name": "tangent bundle",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 128,
+   "name": "Green's Theorem",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 129,
+   "name": "second derivative test",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 130,
+   "name": "Cramer's rule",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 131,
+   "name": "Central Limit Theorem",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 132,
+   "name": "mutual information",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 133,
+   "name": "convex functions",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 134,
+   "name": "strong law of large numbers",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 135,
+   "name": "Wishart distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 136,
+   "name": "adaptive rejection sampling",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 137,
+   "name": "inference in MRFs",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 138,
+   "name": "d-separation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 139,
+   "name": "conditional random fields",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 140,
+   "name": "stochastic gradient descent",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 141,
+   "name": "factor graphs",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 142,
+   "name": "variable elimination",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 143,
+   "name": "Cholesky decomposition",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 144,
+   "name": "log-linear MRFs",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 145,
+   "name": "Bayesian estimation of Bayes net parameters",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 146,
+   "name": "multivariate Gaussian distribution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 147,
+   "name": "logistic regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 148,
+   "name": "evidence approximation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 149,
+   "name": "Bayesian model averaging",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 150,
+   "name": "Bayesian naive Bayes",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 151,
+   "name": "Chinese restaurant process",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 152,
+   "name": "Gibbs sampling",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 153,
+   "name": "MCMC convergence",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 154,
+   "name": "projection onto a subspace",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 155,
+   "name": "kernel trick",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 156,
+   "name": "Jeffreys prior",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 157,
+   "name": "particle filter",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 158,
+   "name": "variational inference",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 159,
+   "name": "cotangent bundle",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 160,
+   "name": "evaluating multiple integrals: change of variables",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 161,
+   "name": "Stokes' Theorem (three dimensions)",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 162,
+   "name": "diagonalization",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 163,
+   "name": "multiplicity of eigenvalues",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 164,
+   "name": "differential entropy",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 165,
+   "name": "Jensen's inequality",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 166,
+   "name": "annealed importance sampling",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 167,
+   "name": "forward-backward algorithm",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 168,
+   "name": "Bayes Ball",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 169,
+   "name": "computational complexity of graphical model inference",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 170,
+   "name": "converting between graphical models",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 171,
+   "name": "MRF parameter learning",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 172,
+   "name": "sum-product on trees",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 173,
+   "name": "max-product on trees",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 174,
+   "name": "computations on multivariate Gaussians",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 175,
+   "name": "information form for multivariate Gaussians",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 176,
+   "name": "Laplace approximation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 177,
+   "name": "probit regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 178,
+   "name": "Dirichlet process",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 179,
+   "name": "Indian buffet process",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 180,
+   "name": "mixture of Gaussians models",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 181,
+   "name": "collapsed Gibbs sampling",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 182,
+   "name": "orthonormal bases",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 183,
+   "name": "Gaussian processes",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 184,
+   "name": "Metropolis-Hastings algorithm",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 185,
+   "name": "maximum likelihood: multivariate Gaussians",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 186,
+   "name": "sequential Monte Carlo",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 187,
+   "name": "mean field approximation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 188,
+   "name": "tensor fields on manifolds",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 189,
+   "name": "linear least squares",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 190,
+   "name": "solving difference equations with matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 191,
+   "name": "sampling from a Gaussian",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 192,
+   "name": "Bayes net structure learning",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 193,
+   "name": "Boltzmann machines",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 194,
+   "name": "restricted Boltzmann machines",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 195,
+   "name": "loopy belief propagation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 196,
+   "name": "Viterbi algorithm",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 197,
+   "name": "junction trees",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 198,
+   "name": "linear dynamical systems",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 199,
+   "name": "linear-Gaussian models",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 200,
+   "name": "Swedsen-Wang algorithm",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 201,
+   "name": "Bayesian parameter estimation: multivariate Gaussians",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 202,
+   "name": "beta process",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 203,
+   "name": "CRP clustering",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 204,
+   "name": "spectral decomposition",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 205,
+   "name": "Gibbs sampling as a special case of Metropolis-Hastings",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 206,
+   "name": "Expectation-Maximization algorithm",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 207,
+   "name": "reversible jump MCMC",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 208,
+   "name": "variational Bayes",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 209,
+   "name": "variational inference and exponential families",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 210,
+   "name": "differential forms",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 211,
+   "name": "linear regression: closed-form solution",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 212,
+   "name": "QR decomposition",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 213,
+   "name": "unitary matrices",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 214,
+   "name": "deep belief networks",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 215,
+   "name": "expectation propagation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 216,
+   "name": "Gaussian MRFs",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 217,
+   "name": "HMM inference as belief propagation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 218,
+   "name": "Hamiltonian Monte Carlo",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 219,
+   "name": "Kalman filter",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 220,
+   "name": "loopy BP as variational inference",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 221,
+   "name": "structured mean field",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 222,
+   "name": "Bayesian linear regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 223,
+   "name": "singular value decomposition",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 224,
+   "name": "factor analysis",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 225,
+   "name": "exterior derivative",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 226,
+   "name": "Baum-Welch algorithm",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 227,
+   "name": "Gaussian BP on trees",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 228,
+   "name": "Gaussian variable elimination",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 229,
+   "name": "Kalman filter derivation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 230,
+   "name": "Kalman smoother",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 231,
+   "name": "learning Bayes net parameters with missing data",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 232,
+   "name": "variational interpretation of EM",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 233,
+   "name": "Bayesian logistic regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 234,
+   "name": "latent semantic analysis",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 235,
+   "name": "Gaussian process regression",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 236,
+   "name": "IBP linear-Gaussian model",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 237,
+   "name": "pullback",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 238,
+   "name": "Gaussian variable elimination as Gaussian elimination",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 239,
+   "name": "Kalman smoothing as forward-backward",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 240,
+   "name": "learning linear dynamical systems",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 241,
+   "name": "probabilistic Latent Semantic Analysis",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 242,
+   "name": "learning GP hyperparameters",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 243,
+   "name": "latent Dirichlet allocation",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 244,
+   "name": "Chinese restaurant franchise",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ },
+ {
+   "id": 245,
+   "name": "hierarchical Dirichlet process",
+   "fz": 1,
+   "x": 0,
+   "y": 0
+ }
+],
+"links": []
+}

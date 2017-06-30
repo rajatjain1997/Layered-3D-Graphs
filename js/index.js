@@ -1,16 +1,16 @@
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 var simulation = d3_force.forceSimulation().numDimensions(3)
-  .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(10));
+  .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
+  .force("center", d3.forceCenter(0,0));
 
-d3.json("../data/smalldep.json", function(error, graph) {
+d3.json("../data/names.json", function(error, graph) {
   if (error) throw error;
   var layers = 3;
 
   for(var iter = 1; iter<=layers; iter++) {
     (function(iter) {
-      simulation = simulation.force("layerrepel" + iter, isolate(d3.forceManyBody(), graph.nodes, function(d) {return d.group == iter;}));
-      simulation = simulation.force("layerconstraint" + iter, isolate(d3_force.forceZ(iter*10).strength(2), graph.nodes, function(d) {return d.group == iter;}));
+      simulation = simulation.force("layerrepel" + iter, isolate(d3.forceManyBody().strength(-100), graph.nodes, function(d) {return d.fz == iter;}));
     })(iter);
   }
 
@@ -21,6 +21,9 @@ d3.json("../data/smalldep.json", function(error, graph) {
     .links(graph.links);
 });
 
+// simulation.on("tick", function() {
+//   console.log(simulation.nodes());
+// })
 
 simulation.on("end", function() {
   var nodePos=simulation.nodes();  

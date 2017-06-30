@@ -1,245 +1,246 @@
-1,probability
-2,gamma function
-3,functions of several variables
-4,vectors
-5,loss function
-6,multinomial coefficients
-7,equivalence relations
-8,complex numbers
-9,Hopfield networks
-10,asymptotic complexity
-11,propositional logic
-12,Turing machines
-13,conditional probability
-14,random variables
-15,partial derivatives
-16,multiple integrals
-17,dot product
-18,linear systems as matrices
-19,limits and continuity in R^n
-20,subspaces
-21,vector spaces
-22,vector fields
-23,line integrals
-24,topology of R^n
-25,roots of polynomials
-26,unions of events
-27,propositional satisfiability
-28,nondeterministic Turing machines
-29,Bayes' rule
-30,optimization problems
-31,multivariate distributions
-32,expectation and variance
-33,independent events
-34,matrix multiplication
-35,cumulative distribution function
-36,linear approximation
-37,bases
-38,Gaussian elimination
-39,column space and nullspace
-40,linear transformations as matrices
-41,cross product
-42,evaluating multiple integrals: polar coordinates
-43,inner product
-44,convex sets
-45,NP complexity class
-46,conditional distributions
-47,beta distribution
-48,independent random variables
-49,Gaussian distribution
-50,conditional independence
-51,linear regression
-52,matrix inverse
-53,matrix transpose
-54,higher-order partial derivatives
-55,gradient
-56,binomial distribution
-57,gamma distribution
-58,Monte Carlo estimation
-59,Chain Rule
-60,differentiable manifolds
-61,dual space
-62,surface integrals
-63,parameterizing lines and planes
-64,computing the nullspace
-65,solution sets of linear systems
-66,exponential distribution
-67,Markov and Chebyshev inequalities
-68,NP-completeness
-69,Markov decision process (MDP)
-70,Bayesian parameter estimation
-71,maximum likelihood
-72,Bayesian networks
-73,Markov chains
-74,covariance
-75,determinant
-76,positive definite matrices
-77,binary linear classifiers
-78,Taylor approximations
-79,probit function
-80,gradient descent
-81,generalization
-82,multinomial distribution
-83,exponential families
-84,Student-t distribution
-85,Poisson distribution
-86,Markov random fields
-87,four fundamental subspaces
-88,change of basis
-89,basis function expansions
-90,importance sampling
-91,Lagrange multipliers
-92,entropy
-93,conservative vector fields
-94,differentiable maps between manifolds
-95,tensors
-96,Divergence Theorem
-97,complex vectors and matrices
-98,computing matrix inverses
-99,LU factorization
-100,moment generating functions
-101,multivariate CDF
-102,rejection sampling
-103,transformation method
-104,weak law of large numbers
-105,Bayes net parameter learning
-106,Markov models
-107,linear regression as maximum likelihood
-108,covariance matrices
-109,Bayesian decision theory
-110,ridge regression
-111,Bayesian model comparison
-112,MAP parameter estimation
-113,naive Bayes
-114,Bayesian parameter estimation: multinomial distribution
-115,Bayesian parameter estimation in exponential families
-116,Bayesian parameter estimation: Gaussian distribution
-117,Dirichlet distribution
-118,Markov chain Monte Carlo
-119,eigenvalues and eigenvectors
-120,orthogonal subspaces
-121,uninformative priors
-122,Fisher information
-123,hidden Markov models
-124,PDFs of functions of random variables
-125,KL divergence
-126,determinant and volume
-127,tangent bundle
-128,Green's Theorem
-129,second derivative test
-130,Cramer's rule
-131,Central Limit Theorem
-132,mutual information
-133,convex functions
-134,strong law of large numbers
-135,Wishart distribution
-136,adaptive rejection sampling
-137,inference in MRFs
-138,d-separation
-139,conditional random fields
-140,stochastic gradient descent
-141,factor graphs
-142,variable elimination
-143,Cholesky decomposition
-144,log-linear MRFs
-145,Bayesian estimation of Bayes net parameters
-146,multivariate Gaussian distribution
-147,logistic regression
-148,evidence approximation
-149,Bayesian model averaging
-150,Bayesian naive Bayes
-151,Chinese restaurant process
-152,Gibbs sampling
-153,MCMC convergence
-154,projection onto a subspace
-155,kernel trick
-156,Jeffreys prior
-157,particle filter
-158,variational inference
-159,cotangent bundle
-160,evaluating multiple integrals: change of variables
-161,Stokes' Theorem (three dimensions)
-162,diagonalization
-163,multiplicity of eigenvalues
-164,differential entropy
-165,Jensen's inequality
-166,annealed importance sampling
-167,forward-backward algorithm
-168,Bayes Ball
-169,computational complexity of graphical model inference
-170,converting between graphical models
-171,MRF parameter learning
-172,sum-product on trees
-173,max-product on trees
-174,computations on multivariate Gaussians
-175,information form for multivariate Gaussians
-176,Laplace approximation
-177,probit regression
-178,Dirichlet process
-179,Indian buffet process
-180,mixture of Gaussians models
-181,collapsed Gibbs sampling
-182,orthonormal bases
-183,Gaussian processes
-184,Metropolis-Hastings algorithm
-185,maximum likelihood: multivariate Gaussians
-186,sequential Monte Carlo
-187,mean field approximation
-188,tensor fields on manifolds
-189,linear least squares
-190,solving difference equations with matrices
-191,sampling from a Gaussian
-192,Bayes net structure learning
-193,Boltzmann machines
-194,restricted Boltzmann machines
-195,loopy belief propagation
-196,Viterbi algorithm
-197,junction trees
-198,linear dynamical systems
-199,linear-Gaussian models
-200,Swedsen-Wang algorithm
-201,Bayesian parameter estimation: multivariate Gaussians
-202,beta process
-203,CRP clustering
-204,spectral decomposition
-205,Gibbs sampling as a special case of Metropolis-Hastings
-206,Expectation-Maximization algorithm
-207,reversible jump MCMC
-208,variational Bayes
-209,variational inference and exponential families
-210,differential forms
-211,linear regression: closed-form solution
-212,QR decomposition
-213,unitary matrices
-214,deep belief networks
-215,expectation propagation
-216,Gaussian MRFs
-217,HMM inference as belief propagation
-218,Hamiltonian Monte Carlo
-219,Kalman filter
-220,loopy BP as variational inference
-221,structured mean field
-222,Bayesian linear regression
-223,singular value decomposition
-224,factor analysis
-225,exterior derivative
-226,Baum-Welch algorithm
-227,Gaussian BP on trees
-228,Gaussian variable elimination
-229,Kalman filter derivation
-230,Kalman smoother
-231,learning Bayes net parameters with missing data
-232,variational interpretation of EM
-233,Bayesian logistic regression
-234,latent semantic analysis
-235,Gaussian process regression
-236,IBP linear-Gaussian model
-237,pullback
-238,Gaussian variable elimination as Gaussian elimination
-239,Kalman smoothing as forward-backward
-240,learning linear dynamical systems
-241,probabilistic Latent Semantic Analysis
-242,learning GP hyperparameters
-243,latent Dirichlet allocation
-244,Chinese restaurant franchise
-245,hierarchical Dirichlet process
+id,name,fz,x,y
+1,probability,1,0,0
+2,gamma function,1,0,0
+3,functions of several variables,1,0,0
+4,vectors,1,0,0
+5,loss function,1,0,0
+6,multinomial coefficients,1,0,0
+7,equivalence relations,1,0,0
+8,complex numbers,1,0,0
+9,Hopfield networks,1,0,0
+10,asymptotic complexity,1,0,0
+11,propositional logic,1,0,0
+12,Turing machines,1,0,0
+13,conditional probability,1,0,0
+14,random variables,1,0,0
+15,partial derivatives,1,0,0
+16,multiple integrals,1,0,0
+17,dot product,1,0,0
+18,linear systems as matrices,1,0,0
+19,limits and continuity in R^n,1,0,0
+20,subspaces,1,0,0
+21,vector spaces,1,0,0
+22,vector fields,1,0,0
+23,line integrals,1,0,0
+24,topology of R^n,1,0,0
+25,roots of polynomials,1,0,0
+26,unions of events,1,0,0
+27,propositional satisfiability,1,0,0
+28,nondeterministic Turing machines,1,0,0
+29,Bayes' rule,1,0,0
+30,optimization problems,1,0,0
+31,multivariate distributions,1,0,0
+32,expectation and variance,1,0,0
+33,independent events,1,0,0
+34,matrix multiplication,1,0,0
+35,cumulative distribution function,1,0,0
+36,linear approximation,1,0,0
+37,bases,1,0,0
+38,Gaussian elimination,1,0,0
+39,column space and nullspace,1,0,0
+40,linear transformations as matrices,1,0,0
+41,cross product,1,0,0
+42,evaluating multiple integrals: polar coordinates,1,0,0
+43,inner product,1,0,0
+44,convex sets,1,0,0
+45,NP complexity class,1,0,0
+46,conditional distributions,1,0,0
+47,beta distribution,1,0,0
+48,independent random variables,1,0,0
+49,Gaussian distribution,1,0,0
+50,conditional independence,1,0,0
+51,linear regression,1,0,0
+52,matrix inverse,1,0,0
+53,matrix transpose,1,0,0
+54,higher-order partial derivatives,1,0,0
+55,gradient,1,0,0
+56,binomial distribution,1,0,0
+57,gamma distribution,1,0,0
+58,Monte Carlo estimation,1,0,0
+59,Chain Rule,1,0,0
+60,differentiable manifolds,1,0,0
+61,dual space,1,0,0
+62,surface integrals,1,0,0
+63,parameterizing lines and planes,1,0,0
+64,computing the nullspace,1,0,0
+65,solution sets of linear systems,1,0,0
+66,exponential distribution,1,0,0
+67,Markov and Chebyshev inequalities,1,0,0
+68,NP-completeness,1,0,0
+69,Markov decision process (MDP),1,0,0
+70,Bayesian parameter estimation,1,0,0
+71,maximum likelihood,1,0,0
+72,Bayesian networks,1,0,0
+73,Markov chains,1,0,0
+74,covariance,1,0,0
+75,determinant,1,0,0
+76,positive definite matrices,1,0,0
+77,binary linear classifiers,1,0,0
+78,Taylor approximations,1,0,0
+79,probit function,1,0,0
+80,gradient descent,1,0,0
+81,generalization,1,0,0
+82,multinomial distribution,1,0,0
+83,exponential families,1,0,0
+84,Student-t distribution,1,0,0
+85,Poisson distribution,1,0,0
+86,Markov random fields,1,0,0
+87,four fundamental subspaces,1,0,0
+88,change of basis,1,0,0
+89,basis function expansions,1,0,0
+90,importance sampling,1,0,0
+91,Lagrange multipliers,1,0,0
+92,entropy,1,0,0
+93,conservative vector fields,1,0,0
+94,differentiable maps between manifolds,1,0,0
+95,tensors,1,0,0
+96,Divergence Theorem,1,0,0
+97,complex vectors and matrices,1,0,0
+98,computing matrix inverses,1,0,0
+99,LU factorization,1,0,0
+100,moment generating functions,1,0,0
+101,multivariate CDF,1,0,0
+102,rejection sampling,1,0,0
+103,transformation method,1,0,0
+104,weak law of large numbers,1,0,0
+105,Bayes net parameter learning,1,0,0
+106,Markov models,1,0,0
+107,linear regression as maximum likelihood,1,0,0
+108,covariance matrices,1,0,0
+109,Bayesian decision theory,1,0,0
+110,ridge regression,1,0,0
+111,Bayesian model comparison,1,0,0
+112,MAP parameter estimation,1,0,0
+113,naive Bayes,1,0,0
+114,Bayesian parameter estimation: multinomial distribution,1,0,0
+115,Bayesian parameter estimation in exponential families,1,0,0
+116,Bayesian parameter estimation: Gaussian distribution,1,0,0
+117,Dirichlet distribution,1,0,0
+118,Markov chain Monte Carlo,1,0,0
+119,eigenvalues and eigenvectors,1,0,0
+120,orthogonal subspaces,1,0,0
+121,uninformative priors,1,0,0
+122,Fisher information,1,0,0
+123,hidden Markov models,1,0,0
+124,PDFs of functions of random variables,1,0,0
+125,KL divergence,1,0,0
+126,determinant and volume,1,0,0
+127,tangent bundle,1,0,0
+128,Green's Theorem,1,0,0
+129,second derivative test,1,0,0
+130,Cramer's rule,1,0,0
+131,Central Limit Theorem,1,0,0
+132,mutual information,1,0,0
+133,convex functions,1,0,0
+134,strong law of large numbers,1,0,0
+135,Wishart distribution,1,0,0
+136,adaptive rejection sampling,1,0,0
+137,inference in MRFs,1,0,0
+138,d-separation,1,0,0
+139,conditional random fields,1,0,0
+140,stochastic gradient descent,1,0,0
+141,factor graphs,1,0,0
+142,variable elimination,1,0,0
+143,Cholesky decomposition,1,0,0
+144,log-linear MRFs,1,0,0
+145,Bayesian estimation of Bayes net parameters,1,0,0
+146,multivariate Gaussian distribution,1,0,0
+147,logistic regression,1,0,0
+148,evidence approximation,1,0,0
+149,Bayesian model averaging,1,0,0
+150,Bayesian naive Bayes,1,0,0
+151,Chinese restaurant process,1,0,0
+152,Gibbs sampling,1,0,0
+153,MCMC convergence,1,0,0
+154,projection onto a subspace,1,0,0
+155,kernel trick,1,0,0
+156,Jeffreys prior,1,0,0
+157,particle filter,1,0,0
+158,variational inference,1,0,0
+159,cotangent bundle,1,0,0
+160,evaluating multiple integrals: change of variables,1,0,0
+161,Stokes' Theorem (three dimensions),1,0,0
+162,diagonalization,1,0,0
+163,multiplicity of eigenvalues,1,0,0
+164,differential entropy,1,0,0
+165,Jensen's inequality,1,0,0
+166,annealed importance sampling,1,0,0
+167,forward-backward algorithm,1,0,0
+168,Bayes Ball,1,0,0
+169,computational complexity of graphical model inference,1,0,0
+170,converting between graphical models,1,0,0
+171,MRF parameter learning,1,0,0
+172,sum-product on trees,1,0,0
+173,max-product on trees,1,0,0
+174,computations on multivariate Gaussians,1,0,0
+175,information form for multivariate Gaussians,1,0,0
+176,Laplace approximation,1,0,0
+177,probit regression,1,0,0
+178,Dirichlet process,1,0,0
+179,Indian buffet process,1,0,0
+180,mixture of Gaussians models,1,0,0
+181,collapsed Gibbs sampling,1,0,0
+182,orthonormal bases,1,0,0
+183,Gaussian processes,1,0,0
+184,Metropolis-Hastings algorithm,1,0,0
+185,maximum likelihood: multivariate Gaussians,1,0,0
+186,sequential Monte Carlo,1,0,0
+187,mean field approximation,1,0,0
+188,tensor fields on manifolds,1,0,0
+189,linear least squares,1,0,0
+190,solving difference equations with matrices,1,0,0
+191,sampling from a Gaussian,1,0,0
+192,Bayes net structure learning,1,0,0
+193,Boltzmann machines,1,0,0
+194,restricted Boltzmann machines,1,0,0
+195,loopy belief propagation,1,0,0
+196,Viterbi algorithm,1,0,0
+197,junction trees,1,0,0
+198,linear dynamical systems,1,0,0
+199,linear-Gaussian models,1,0,0
+200,Swedsen-Wang algorithm,1,0,0
+201,Bayesian parameter estimation: multivariate Gaussians,1,0,0
+202,beta process,1,0,0
+203,CRP clustering,1,0,0
+204,spectral decomposition,1,0,0
+205,Gibbs sampling as a special case of Metropolis-Hastings,1,0,0
+206,Expectation-Maximization algorithm,1,0,0
+207,reversible jump MCMC,1,0,0
+208,variational Bayes,1,0,0
+209,variational inference and exponential families,1,0,0
+210,differential forms,1,0,0
+211,linear regression: closed-form solution,1,0,0
+212,QR decomposition,1,0,0
+213,unitary matrices,1,0,0
+214,deep belief networks,1,0,0
+215,expectation propagation,1,0,0
+216,Gaussian MRFs,1,0,0
+217,HMM inference as belief propagation,1,0,0
+218,Hamiltonian Monte Carlo,1,0,0
+219,Kalman filter,1,0,0
+220,loopy BP as variational inference,1,0,0
+221,structured mean field,1,0,0
+222,Bayesian linear regression,1,0,0
+223,singular value decomposition,1,0,0
+224,factor analysis,1,0,0
+225,exterior derivative,1,0,0
+226,Baum-Welch algorithm,1,0,0
+227,Gaussian BP on trees,1,0,0
+228,Gaussian variable elimination,1,0,0
+229,Kalman filter derivation,1,0,0
+230,Kalman smoother,1,0,0
+231,learning Bayes net parameters with missing data,1,0,0
+232,variational interpretation of EM,1,0,0
+233,Bayesian logistic regression,1,0,0
+234,latent semantic analysis,1,0,0
+235,Gaussian process regression,1,0,0
+236,IBP linear-Gaussian model,1,0,0
+237,pullback,1,0,0
+238,Gaussian variable elimination as Gaussian elimination,1,0,0
+239,Kalman smoothing as forward-backward,1,0,0
+240,learning linear dynamical systems,1,0,0
+241,probabilistic Latent Semantic Analysis,1,0,0
+242,learning GP hyperparameters,1,0,0
+243,latent Dirichlet allocation,1,0,0
+244,Chinese restaurant franchise,1,0,0
+245,hierarchical Dirichlet process,1,0,0
