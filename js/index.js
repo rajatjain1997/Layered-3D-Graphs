@@ -52,7 +52,7 @@ simulation.on("end", function() {
       width: 2
     },
     marker: {
-      size: 12,
+      size: 5,
       line: {
       color: 'rgba(217, 217, 217, 0.14)',
       width: 0.5},
@@ -73,9 +73,9 @@ simulation.on("end", function() {
       width: 2
     },
     marker: {
-      size: 12,
+      size: 5,
       line: {
-      color: 'rgba(217, 217, 217, 0.14)',
+      color: 8,
       width: 0.5},
       opacity: 0.8},
     type: 'scatter3d'
