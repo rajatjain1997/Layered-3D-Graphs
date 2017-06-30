@@ -3,9 +3,9 @@
 	{"id": 1, "name": "CP", "fz": 1, "x":0, "y":0},
 	{"id": 2, "name": "M2", "fz": 1, "x": 0, "y":0},
 	{"id": 3, "name": "PnS", "fz": 1, "x":0, "y": 0},
-	{"id": 4, "name": "LiCS", "fz": 2, "x":0, "y": 0},
-	{"id": 5, "name": "DSA", "fz": 2, "x":0, "y": 0},
-	{"id": 6, "name": "CC", "fz": 3, "x":0, "y": 0}
+	{"id": 4, "name": "LiCS", "fz": 1, "x":0, "y": 0},
+	{"id": 5, "name": "DSA", "fz": 1, "x":0, "y": 0},
+	{"id": 6, "name": "CC", "fz": 1, "x":0, "y": 0}
 	],
 	"links": [
 		{"source": 1, "target": 4},

@@ -4,8 +4,21 @@ var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
 
-d3.json("../data/names.json", function(error, graph) {
+d3.json("../data/smalldep.json", function(error, graph) {
   if (error) throw error;
+
+  var i;
+  for(i=0;i<graph.links.length;i++)
+  {
+    if(graph.nodes[graph.links[i].source-1].fz>=graph.nodes[graph.links[i].target-1].fz)
+      graph.nodes[graph.links[i].target-1].fz=graph.nodes[graph.links[i].source-1].fz+1;
+      for(j=0;j<graph.links.length;j++)
+      {
+        if(graph.nodes[graph.links[j].source-1].fz>=graph.nodes[graph.links[j].target-1].fz)
+          graph.nodes[graph.links[j].target-1].fz=graph.nodes[graph.links[j].source-1].fz+1;
+      }   
+  }
+
   var layers = 3;
 
   for(var iter = 1; iter<=layers; iter++) {
