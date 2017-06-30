@@ -35,15 +35,17 @@ d3.json("../data/names.json", function(error, graph) {
 });
 
 simulation.on("end", function() {
-  var nodePos=simulation.nodes();  
-  console.log(simulation.force("link").links()[0].source);
-  var trace = new Array();
+  var nodePos=simulation.nodes();
+  var edgePos=simulation.force("link").links();  
+  //console.log(simulation.force("link").links());
+  var nodes = new Array();
 
   var i;
   for(i=0;i<nodePos.length;i++)
   {
-    trace[i]={
+    nodes[i]={
     x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].z],
+    text:[nodePos[i].name],
     mode: 'markers',
     line: {
       color: 10, 
@@ -59,11 +61,38 @@ simulation.on("end", function() {
   };
   }
 
+  var edges = new Array();
+
+  for(i=0;i<edgePos.length;i++)
+  {
+    edges[i]={
+    x:[edgePos[i].source.x,edgePos[i].target.x], y:[edgePos[i].source.y,edgePos[i].target.y], z:[edgePos[i].source.z,edgePos[i].target.z],
+    mode: 'lines',
+    line: {
+      color: 10, 
+      width: 2
+    },
+    marker: {
+      size: 12,
+      line: {
+      color: 'rgba(217, 217, 217, 0.14)',
+      width: 0.5},
+      opacity: 0.8},
+    type: 'scatter3d'
+  };
+  }
   var data = new Array();
+  
   for(i=0;i<nodePos.length;i++)
   {
-    data.push(trace[i]);
+    data.push(nodes[i]);
   }
+
+  for(i=0;i<edgePos.length;i++)
+  {
+    data.push(edges[i]);
+  }
+  
   var layout = {margin: {
     l: 0,
     r: 0,
