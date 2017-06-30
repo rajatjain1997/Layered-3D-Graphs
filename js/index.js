@@ -8,18 +8,25 @@ d3.json("../data/names.json", function(error, graph) {
   if (error) throw error;
 
   var i;
+  var layers=1;
   for(i=0;i<graph.links.length;i++)
   {
     if(graph.nodes[graph.links[i].source-1].fz>=graph.nodes[graph.links[i].target-1].fz)
-      graph.nodes[graph.links[i].target-1].fz=graph.nodes[graph.links[i].source-1].fz+1;
+      {
+        graph.nodes[graph.links[i].target-1].fz=graph.nodes[graph.links[i].source-1].fz+1;
+        if(graph.nodes[graph.links[i].target-1].fz>layers)
+        layers=graph.nodes[graph.links[i].target-1].fz;
+      }
       for(j=0;j<graph.links.length;j++)
       {
         if(graph.nodes[graph.links[j].source-1].fz>=graph.nodes[graph.links[j].target-1].fz)
           graph.nodes[graph.links[j].target-1].fz=graph.nodes[graph.links[j].source-1].fz+1;
+        if(graph.nodes[graph.links[j].target-1].fz>layers)
+        layers=graph.nodes[graph.links[j].target-1].fz;
       }   
   }
 
-  var layers = 3;
+  console.log(layers);
 
   for(var iter = 1; iter<=layers; iter++) {
     (function(iter) {
