@@ -8,7 +8,7 @@ d3.json("../data/names.json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;
-   var i;
+  var i;
   // for(i=0;i<graph.links.length;i++)
   // {
   //   if(graph.nodes[graph.links[i].source-1].fz>=graph.nodes[graph.links[i].target-1].fz)
@@ -25,6 +25,7 @@ d3.json("../data/names.json", function(error, graph) {
   //       layers=graph.nodes[graph.links[j].target-1].fz;
   //     }   
   // }
+  log("Layering Algorithm Initiated...");
 
     var source = new Array();
     var target = new Array();
@@ -73,7 +74,7 @@ d3.json("../data/names.json", function(error, graph) {
       }
     }
 
-  console.log(layers);
+  log("No. of layers are: "+layers);
   
   for(var iter = 1; iter<=layers; iter++) {
     (function(iter) {
@@ -86,9 +87,13 @@ d3.json("../data/names.json", function(error, graph) {
 
   simulation.force("link")
     .links(graph.links);
+
+  log("Beginning force calcuations");
 });
 
+
 simulation.on("end", function() {
+  log("Force Calculations ended. Rendering now....");
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
   //console.log(simulation.force("link").links());
@@ -160,4 +165,8 @@ function isolate(force, nodes, filter) {
   var initialize = force.initialize;
   force.initialize = function() { initialize.call(force, nodes.filter(filter)); };
   return force;
+}
+
+function log(msg) {
+  d3.select("#log").append("p").text(msg);
 }
