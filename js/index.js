@@ -3,8 +3,8 @@ var color = d3.scaleOrdinal(d3.schemeCategory20);
 var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
-
-d3.json("../data/names.json", function(error, graph) {
+var timer;
+d3.json("../data/debian.json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;
@@ -87,13 +87,15 @@ d3.json("../data/names.json", function(error, graph) {
 
   simulation.force("link")
     .links(graph.links);
-
-  log("Beginning force calcuations");
+  timer = new Date();
+  log("Beginning force calcuations and rendering");
 });
 
 
 simulation.on("end", function() {
-  log("Force Calculations ended. Rendering now....");
+  timer= new Date()-timer;
+  log("Force calculations took "+timer/1000+" seconds. Rest of the time was spent in rendering.");
+  console.log("Forces done");
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
   //console.log(simulation.force("link").links());
