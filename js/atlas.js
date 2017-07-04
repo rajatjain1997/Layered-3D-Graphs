@@ -99,7 +99,7 @@ simulation.on("end", function() {
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
   $.post("http://localhost:80",
-    {data: "{nodes:"+JSON.stringify(nodePos)+", links:"+ JSON.stringify(edgePos)+"}"}
+    {data: "{\"nodes\":"+JSON.stringify(nodePos, null, 4)+",\"links\":"+ JSON.stringify(edgePos, null, 4)+"}"}
   );
   // //console.log(simulation.force("link").links());
   // var nodes = new Array();

@@ -11,9 +11,9 @@ app.use('/',express.static("../html"))
 
 
 app.post('/', function(req, res) {
-  var data = JSON.stringify(req.body.data);
-  fs.writeFile('../tmp/test.json', data, function(err) {
-  	if(err) {
+  var data = req.body.data;
+  fs.writeFile('../tmp/test.json', data, "utf-8", 4,function(err) {
+  	if(err) {	
   		res.send(err);
   	}
   	res.send("Serialized!");
