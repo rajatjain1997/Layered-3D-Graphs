@@ -4,7 +4,7 @@ var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
 var timer;
-d3.json("../data/debian.json", function(error, graph) {
+d3.json("../data/smalldep.json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;
@@ -95,72 +95,75 @@ d3.json("../data/debian.json", function(error, graph) {
 simulation.on("end", function() {
   timer= new Date()-timer;
   log("Force calculations took "+timer/1000+" seconds. Rest of the time was spent in rendering.");
-  console.log("Forces done");
+  console.log("Forces done in " + timer);
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
-  //console.log(simulation.force("link").links());
-  var nodes = new Array();
+  $.post("http://localhost:8000",
+    {data: "{nodes:"+JSON.stringify(nodePos)+", links:"+ JSON.stringify(edgePos)+"}"}
+  );
+  // //console.log(simulation.force("link").links());
+  // var nodes = new Array();
 
-  var i;
-  for(i=0;i<nodePos.length;i++)
-  {
-    nodes[i]={
-    x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].z],
-    text:[nodePos[i].name],
-    mode: 'markers',
-    line: {
-      color: 10, 
-      width: 2
-    },
-    marker: {
-      size: 5,
-      line: {
-      color: 'rgba(217, 217, 217, 0.14)',
-      width: 0.5},
-      opacity: 0.8},
-    type: 'scatter3d'
-  };
-  }
+  // var i;
+  // for(i=0;i<nodePos.length;i++)
+  // {
+  //   nodes[i]={
+  //   x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].z],
+  //   text:[nodePos[i].name],
+  //   mode: 'markers',
+  //   line: {
+  //     color: 10, 
+  //     width: 2
+  //   },
+  //   marker: {
+  //     size: 5,
+  //     line: {
+  //     color: 'rgba(217, 217, 217, 0.14)',
+  //     width: 0.5},
+  //     opacity: 0.8},
+  //   type: 'scatter3d'
+  // };
+  // }
 
-  var edges = new Array();
+  // var edges = new Array();
 
-  for(i=0;i<edgePos.length;i++)
-  {
-    edges[i]={
-    x:[edgePos[i].source.x,edgePos[i].target.x], y:[edgePos[i].source.y,edgePos[i].target.y], z:[edgePos[i].source.z,edgePos[i].target.z],
-    mode: 'lines',
-    line: {
-      color: 10, 
-      width: 2
-    },
-    marker: {
-      size: 5,
-      line: {
-      color: 8,
-      width: 0.5},
-      opacity: 0.8},
-    type: 'scatter3d'
-  };
-  }
-  var data = new Array();
+  // for(i=0;i<edgePos.length;i++)
+  // {
+  //   edges[i]={
+  //   x:[edgePos[i].source.x,edgePos[i].target.x], y:[edgePos[i].source.y,edgePos[i].target.y], z:[edgePos[i].source.z,edgePos[i].target.z],
+  //   mode: 'lines',
+  //   line: {
+  //     color: 10, 
+  //     width: 2
+  //   },
+  //   marker: {
+  //     size: 5,
+  //     line: {
+  //     color: 8,
+  //     width: 0.5},
+  //     opacity: 0.8},
+  //   type: 'scatter3d'
+  // };
+  // }
+  // var data = new Array();
   
-  for(i=0;i<nodePos.length;i++)
-  {
-    data.push(nodes[i]);
-  }
+  // for(i=0;i<nodePos.length;i++)
+  // {
+  //   data.push(nodes[i]);
+  // }
 
-  for(i=0;i<edgePos.length;i++)
-  {
-    data.push(edges[i]);
-  }
+  // for(i=0;i<edgePos.length;i++)
+  // {
+  //   data.push(edges[i]);
+  // }
   
-  var layout = {margin: {
-    l: 0,
-    r: 0,
-    b: 0,
-    t: 0
-    }};
-  Plotly.newPlot('myDiv', data, layout);
+  // var layout = {margin: {
+  //   l: 0,
+  //   r: 0,
+  //   b: 0,
+  //   t: 0
+  //   }};
+  // Plotly.newPlot('myDiv', data, layout);
 });
 
 function isolate(force, nodes, filter) {
