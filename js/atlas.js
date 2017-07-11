@@ -4,7 +4,7 @@ var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
 var timer;
-d3.json("../data/meta-academy.json", function(error, graph) {
+d3.json("../data/debian.json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;

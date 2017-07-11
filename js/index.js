@@ -34,7 +34,7 @@ app.post('/neo4j/reset', function(req, res) {
 });
 
 app.post('/neo4j/node', function(req, res) {
-	var nodes = req.body.nodes;
+	var node = req.body.node;
 	var result = session.run("CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})", node);
 	result.then(r=> {res.send("Node added!");});
 	nodesprocessed++;
