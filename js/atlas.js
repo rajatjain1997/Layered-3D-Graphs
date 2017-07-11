@@ -105,6 +105,8 @@ simulation.on("end", function() {
     $.post("http://localhost:80/neo4j/node", {"node": nodePos[nodeitr]});
   }
 
+  $.post("http://localhost:80/neo4j/index", {});
+
   for(var edgeitr = 0; edgeitr< edgePos.length; edgeitr++) {
     $.post("http://localhost:80/neo4j/edge", {"edge": edgePos[edgeitr]});
   }
