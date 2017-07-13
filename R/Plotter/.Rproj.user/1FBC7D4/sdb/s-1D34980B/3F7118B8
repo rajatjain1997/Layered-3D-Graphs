@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "#'plot a scatter3d\n#'jsonString of the form '{\"nodes\": [{\"x\" : 1, \"y\" : 1, \"z\" : 1},{\"x\":1,\"y\":2,\"z\":3}]\n#'                         \"links\" : [{\"source\" : {\"x\" : 1, \"y\" : 1, \"z\" : 1},\n#'                                  \"target\" : {\"x\" : 1, \"y\" : 1, \"z\" : 1}}\n#'                                 ,{\"source\" : {\"x\" : 1, \"y\" : 1, \"z\" : 1},\n#'                                  \"target\" : {\"x\" : 1, \"y\" : 1, \"z\" : 1}}]\n#'                        }'\n#'This function plots in 3d given coordinates\n#'@param jsonString\n#'@export\n#'\n\nscatterPlot <- function(jsonString)\n{\n  library(\"car\")\n  library(\"rgl\")\n  library(\"jsonlite\")\n\n  data.json <- jsonlite::fromJSON(jsonString,simplifyVector = TRUE)\n  rgl::plot3d(x=data.json$nodes$x,y=data.json$nodes$y,z=data.json$nodes$z,xlab=\"x\",ylab=\"y\",zlab=\"z\",size=10,col=\"blue\",box=FALSE)\n  rgl::planes3d(a=0,b=0,c=1,d=(-1)*data.json$nodes$z,alpha=0.5)\n\n  count=1\n  while(count<=nrow(data.json$links$source)){\n    rgl::lines3d(x=c(data.json$links$source$x[c(count)],data.json$links$target$x[c(count)]),\n                 y=c(data.json$links$source$y[c(count)],data.json$links$target$y[c(count)]),\n                 z=c(data.json$links$source$z[c(count)],data.json$links$target$z[c(count)]),\n                 add=TRUE)\n    count=count+1\n    }\n}\n",
+    "created" : 1499265536512.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3290168938",
+    "id" : "3F7118B8",
+    "lastKnownWriteTime" : 1499273830,
+    "last_content_update" : 1499273830448,
+    "path" : "F:/Atlas/Plotter/scatterPlot.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
