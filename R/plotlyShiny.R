@@ -60,20 +60,25 @@ server <- function(input, output, session) {
       xValues <- c()
       yValues <- c()
       zValues <- c()
-  
+      nodes.names <- c()
+      
       while(count <= length(nodes.path)){
         listNodesX <- unlist(lapply(nodes.path[[count]],'[[','x'))
         listNodesY <- unlist(lapply(nodes.path[[count]],'[[','y'))
         listNodesZ <- unlist(lapply(nodes.path[[count]],'[[','z'))
+        names <- unlist(lapply(nodes.path[[count]],'[[','name'))
         if(length(listNodesX)>1){  
           xValues <- c(xValues,'NA',listNodesX)
           yValues <- c(yValues,'NA',listNodesY)
           zValues <- c(zValues,'NA',listNodesZ)
+          nodes.names <- c(nodes.names,'NA',names)
         }
         count=count+1
       }
       
-      plotlyObject <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode='lines+markers',  marker= list(size=2,color='red'), line = list(color='black'))
+      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='red'), text = nodes.names)
+      plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='black'))
+      subplot(plotlyObject1,plotlyObject2)
     }
   })
 }
