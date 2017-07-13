@@ -28,8 +28,9 @@ nodes.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=n
 edges.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
 
 ui <- fluidPage(
+  textInput("search", "Search", ""),
+  actionButton("enter", "Go!"),
   plotlyOutput("plot"),
-  verbatimTextOutput("hover"),
   plotlyOutput("click")
 )
 
@@ -41,17 +42,49 @@ server <- function(input, output, session) {
     combinedObj<-subplot(object1,object2)
     })
   
-  #output$hover <- renderPrint({
-  #  d <- event_data("plotly_hover")
-  #  if (is.null(d)) "Hover events appear here (unhover to clear)" else d
-  #})
-  
   output$click <- renderPlotly({
     d <- event_data("plotly_click")
-    if (is.null(d) || is.null(d$key)){
+    search <- NULL
+    input$enter
+    action <- 0
+    if(action<input$enter) {
+      search <- input$search
+      action <- input$enter + 1
+    }
+    if ((is.null(d) || is.null(d$key)) && is.null(search)){
       plot_ly(x=0,y=0,z=0,type="scatter3d",mode='markers',marker=list(size=5,color='black')) 
-    }else{
+    }else if (!(is.null(d) || is.null(d$key))){
       pathQuery <- paste('MATCH p=()-[*0..]->(n:Node {id:"',as.character(d$key),'"})-[*0..]->() return p',sep="")
+      path <- RNeo4j::getPaths(graph,pathQuery)
+      nodes.path <- lapply(path,nodes)
+      
+      plotlyObject = plot_ly(x=0, y=0, z=0, type="scatter3d", marker=list(size=5,color='red'), mode='lines+markers')
+      count = 1
+      xValues <- c()
+      yValues <- c()
+      zValues <- c()
+      nodes.names <- c()
+      
+      while(count <= length(nodes.path)){
+        listNodesX <- unlist(lapply(nodes.path[[count]],'[[','x'))
+        listNodesY <- unlist(lapply(nodes.path[[count]],'[[','y'))
+        listNodesZ <- unlist(lapply(nodes.path[[count]],'[[','z'))
+        names <- unlist(lapply(nodes.path[[count]],'[[','name'))
+        if(length(listNodesX)>1){  
+          xValues <- c(xValues,'NA',listNodesX)
+          yValues <- c(yValues,'NA',listNodesY)
+          zValues <- c(zValues,'NA',listNodesZ)
+          nodes.names <- c(nodes.names,'NA',names)
+        }
+        count=count+1
+      }
+      
+      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='red'), text = nodes.names)
+      plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='black'))
+      subplot(plotlyObject1,plotlyObject2)
+    } else {
+      pathQuery <- paste('MATCH p=()-[*0..]->(n:Node {name:"',as.character(search),'"})-[*0..]->() return p',sep="")
+      
       path <- RNeo4j::getPaths(graph,pathQuery)
       nodes.path <- lapply(path,nodes)
       
