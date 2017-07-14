@@ -1,20 +1,32 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const path = require('path');
 const fs = require('fs');
 const app = express();
 const neo4j = require('neo4j-driver').v1;
+const config = require('nodejs-config') (path.resolve("../"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 const port = 80;
 
-const driver = neo4j.driver('bolt://192.168.99.100:7687', neo4j.auth.basic("neo4j", "neo"));
+const driver = neo4j.driver(config.get('neo4j').bolt, neo4j.auth.basic(config.get('neo4j').username, config.get('neo4j').password));
 const session = driver.session();
 var nodesprocessed = 0;
 var edgesprocessed = 0;
 
-app.use(express.static("../"));
-app.use('/',express.static("../html"));
 
+app.use(express.static("../"));
+app.use('/',express.static("../views"));
+app.engine('.html', require('ejs').__express);
+app.set('views',  path.resolve("../html"));
+app.set('view engine', 'html');
+
+app.get('/', function(req, res) {
+	res.render('index', {
+		port: port,
+		data: req.query.data
+	});
+});
 
 app.post('/', function(req, res) {
   var data = req.body.data;

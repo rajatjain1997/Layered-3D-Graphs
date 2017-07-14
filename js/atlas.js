@@ -4,7 +4,7 @@ var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
 var timer;
-d3.json("../data/debian.json", function(error, graph) {
+d3.json("../data/"+data+".json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;
@@ -99,16 +99,16 @@ simulation.on("end", function() {
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
 
-  $.post("http://localhost:80/neo4j/reset",{});
+  $.post("http://localhost:"+ port+"/neo4j/reset",{});
   for(var nodeitr = 0; nodeitr<nodePos.length; nodeitr++) {
     // console.log(nodePos[nodeitr]);
-    $.post("http://localhost:80/neo4j/node", {"node": nodePos[nodeitr]});
+    $.post("http://localhost:"+ port+"/neo4j/node", {"node": nodePos[nodeitr]});
   }
 
-  $.post("http://localhost:80/neo4j/index", {});
+  $.post("http://localhost:"+ port+"/neo4j/index", {});
 
   for(var edgeitr = 0; edgeitr< edgePos.length; edgeitr++) {
-    $.post("http://localhost:80/neo4j/edge", {"edge": edgePos[edgeitr]});
+    $.post("http://localhost:"+ port+"/neo4j/edge", {"edge": edgePos[edgeitr]});
   }
 
   //Old posting to server serialization
