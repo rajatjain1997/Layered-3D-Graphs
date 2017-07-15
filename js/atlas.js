@@ -100,89 +100,21 @@ simulation.on("end", function() {
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
 
-  $.post("http://localhost:"+ port+"/neo4j/reset",{});
+  var socket = io('http://localhost:'+port);
+
+  socket.emit('/neo4j/reset', {});
+
   for(var nodeitr = 0; nodeitr<nodePos.length; nodeitr++) {
-    // console.log(nodePos[nodeitr]);
-    $.post("http://localhost:"+ port+"/neo4j/node", {"node": nodePos[nodeitr]});
+    socket.emit('/neo4j/node', {"node": nodePos[nodeitr]});
   }
 
-  $.post("http://localhost:"+ port+"/neo4j/index", {});
+  socket.emit('/neo4j/index', {});
 
   for(var edgeitr = 0; edgeitr< edgePos.length; edgeitr++) {
-    $.post("http://localhost:"+ port+"/neo4j/edge", {"edge": edgePos[edgeitr]});
+    socket.emit('/neo4j/edge', {"edge": edgePos[edgeitr]});
   }
 
   loading_screen.finish();
-
-  //Old posting to server serialization
-  // $.post("http://localhost:80",
-  //   {data: "{\"nodes\":"+JSON.stringify(nodePos, null, 4)+",\"links\":"+ JSON.stringify(edgePos, null, 4)+"}"}
-  // );
-
-  //Plotlty plots
-  // //console.log(simulation.force("link").links());
-  // var nodes = new Array();
-
-  // var i;
-  // for(i=0;i<nodePos.length;i++)
-  // {
-  //   nodes[i]={
-  //   x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].z],
-  //   text:[nodePos[i].name],
-  //   mode: 'markers',
-  //   line: {
-  //     color: 10, 
-  //     width: 2
-  //   },
-  //   marker: {
-  //     size: 5,
-  //     line: {
-  //     color: 'rgba(217, 217, 217, 0.14)',
-  //     width: 0.5},
-  //     opacity: 0.8},
-  //   type: 'scatter3d'
-  // };
-  // }
-
-  // var edges = new Array();
-
-  // for(i=0;i<edgePos.length;i++)
-  // {
-  //   edges[i]={
-  //   x:[edgePos[i].source.x,edgePos[i].target.x], y:[edgePos[i].source.y,edgePos[i].target.y], z:[edgePos[i].source.z,edgePos[i].target.z],
-  //   mode: 'lines',
-  //   line: {
-  //     color: 10, 
-  //     width: 2
-  //   },
-  //   marker: {
-  //     size: 5,
-  //     line: {
-  //     color: 8,
-  //     width: 0.5},
-  //     opacity: 0.8},
-  //   type: 'scatter3d'
-  // };
-  // }
-  // var data = new Array();
-  
-  // for(i=0;i<nodePos.length;i++)
-  // {
-  //   data.push(nodes[i]);
-  // }
-
-  // for(i=0;i<edgePos.length;i++)
-  // {
-  //   data.push(edges[i]);
-  // }
-  
-  // var layout = {margin: {
-  //   l: 0,
-  //   r: 0,
-  //   b: 0,
-  //   t: 0
-  //   }};
-  // Plotly.newPlot('myDiv', data, layout);
 });
 
 function isolate(force, nodes, filter) {

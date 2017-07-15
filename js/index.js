@@ -6,6 +6,8 @@ const app = express();
 const neo4j = require('neo4j-driver').v1;
 const config = require('nodejs-config') (path.resolve("../"));
 const kue = require('kue');
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
 const port = config.get('server').port;
 
@@ -57,53 +59,44 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.post('/neo4j/reset', function(req, res) {
-	neoQueue.create('neo4j', {
-		driver: driver.session,
-		request: "Match (n) detach delete n",
-		params: {}
-	}).save();
-	res.send("Job queued!");
-	nodesprocessed = 0;
-	edgesprocessed = 0;
+io.on('connection', function(socket) {
+	socket.on('/neo4j/reset', function(data) {
+		neoQueue.create('neo4j', {
+			request: "Match (n) detach delete n",
+			params: {}
+		}).save();
+		nodesprocessed = 0;
+		edgesprocessed = 0;
+	});
+	socket.on('/neo4j/node', function(data) {
+		neoQueue.create('neo4j', {
+			request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
+			params: data.node
+		}).save();
+		nodesprocessed++;
+	});
+	socket.on('/neo4j/edge', function(data) {
+		var source = data.edge.source.id;
+		var target = data.edge.target.id;
+		neoQueue.create('neo4j', {
+			request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
+			params: {"source": source, "target": target}
+		}).save();
+		edgesprocessed++;
+	});
+	socket.on('/neo4j/index', function(data) {
+		neoQueue.create('neo4j', {
+			request: "CREATE INDEX ON :Node(id)",
+			params: {}
+		}).save();
+	});
 });
 
-app.post('/neo4j/node', function(req, res) {
-	var node = req.body.node;
-	neoQueue.create('neo4j', {
-		driver: driver.session,
-		request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
-		params: node
-	}).save();
-	res.send("Job queued!");
-	nodesprocessed++;
-});
-
-app.post('/neo4j/edge', function(req, res) {
-	var source = req.body.edge.source.id;
-	var target = req.body.edge.target.id;
-	neoQueue.create('neo4j', {
-		driver: driver.session,
-		request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
-		params: {"source": source, "target": target}
-	}).save();
-	res.send("Job queued!");
-	edgesprocessed++;
-});
-
-app.post('/neo4j/index', function(req, res) {
-	neoQueue.create('neo4j', {
-		driver: driver.session,
-		request: "CREATE INDEX ON :Node(id)",
-		params: {}
-	}).save();
-	res.send("Job queued!");
-})
 
 app.get('/neo4j', function(req, res) {
 	res.send({"Nodes": nodesprocessed, "Edges": edgesprocessed});
-})
+});
 
-app.listen(port, function() {
+server.listen(port, function() {
   console.log('Server listening on http://localhost:' + port);
 });

@@ -11,7 +11,8 @@
     "jsonfile": "^3.0.0",
     "kue": "^0.11.6",
     "neo4j-driver": "^1.2.0",
-    "nodejs-config": "^1.0.1"
+    "nodejs-config": "^1.0.1",
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {},
   "scripts": {
