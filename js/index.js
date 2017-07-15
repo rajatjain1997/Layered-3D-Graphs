@@ -44,6 +44,8 @@ neoQueue.process('neo4j', function(job, done) {
 		});
 });
 
+//Routes
+
 app.get('/', function(req, res) {
 	var data = "meta-academy";
 	if(req.query.data) {

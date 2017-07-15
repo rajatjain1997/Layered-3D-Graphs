@@ -1,3 +1,9 @@
+var loading_screen = pleaseWait({
+  logo: "../images/logo.jpg",
+  backgroundColor: '#f46d3b',
+  loadingHtml: "<div class='sk-wave'><div class='sk-rect sk-rect1'></div><div class='sk-rect sk-rect2'></div><div class='sk-rect sk-rect3'></div><div class='sk-rect sk-rect4'></div><div class='sk-rect sk-rect5'></div></div><p class='loading-message'>Starting Up!</p>"
+});
+
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 var simulation = d3_force.forceSimulation().numDimensions(3)
@@ -73,8 +79,6 @@ d3.json("../data/"+data+".json", function(error, graph) {
         }
       }
     }
-
-  log("No. of layers are: "+layers);
   
   for(var iter = 1; iter<=layers; iter++) {
     (function(iter) {
@@ -87,15 +91,12 @@ d3.json("../data/"+data+".json", function(error, graph) {
 
   simulation.force("link")
     .links(graph.links);
-  timer = new Date();
   log("Beginning force calcuations and rendering");
 });
 
 
 simulation.on("end", function() {
-  timer= new Date()-timer;
-  log("Force calculations took "+timer/1000+" seconds. Rest of the time was spent in rendering.");
-  console.log("Forces done in " + timer);
+  log("Queuing Up requests to neo4j");
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
 
@@ -110,6 +111,8 @@ simulation.on("end", function() {
   for(var edgeitr = 0; edgeitr< edgePos.length; edgeitr++) {
     $.post("http://localhost:"+ port+"/neo4j/edge", {"edge": edgePos[edgeitr]});
   }
+
+  loading_screen.finish();
 
   //Old posting to server serialization
   // $.post("http://localhost:80",
@@ -189,5 +192,5 @@ function isolate(force, nodes, filter) {
 }
 
 function log(msg) {
-  d3.select("#log").append("p").text(msg);
+  loading_screen.updateLoadingHtml("<div class='sk-wave'><div class='sk-rect sk-rect1'></div><div class='sk-rect sk-rect2'></div><div class='sk-rect sk-rect3'></div><div class='sk-rect sk-rect4'></div><div class='sk-rect sk-rect5'></div></div><p class='loading-message'>"+msg+"</p>")
 }
