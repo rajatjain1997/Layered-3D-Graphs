@@ -4,6 +4,8 @@ var loading_screen = pleaseWait({
   loadingHtml: "<div class='sk-wave'><div class='sk-rect sk-rect1'></div><div class='sk-rect sk-rect2'></div><div class='sk-rect sk-rect3'></div><div class='sk-rect sk-rect4'></div><div class='sk-rect sk-rect5'></div></div><p class='loading-message'>Starting Up!</p>"
 });
 
+var socket = io('http://localhost:'+port);
+
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 var simulation = d3_force.forceSimulation().numDimensions(3)
@@ -100,8 +102,6 @@ simulation.on("end", function() {
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();  
 
-  var socket = io('http://localhost:'+port);
-
   socket.emit('/neo4j/reset', {});
 
   for(var nodeitr = 0; nodeitr<nodePos.length; nodeitr++) {
@@ -114,7 +114,14 @@ simulation.on("end", function() {
     socket.emit('/neo4j/edge', {"edge": edgePos[edgeitr]});
   }
 
+  socket.emit('/neo4j/endtransmission',{});
+
+  log("Waiting for neo4J to load everything");
+});
+
+socket.on("neo4j", function(data) {
   loading_screen.finish();
+  //Write shiny app code here. You can put up an iframe using d3 or something
 });
 
 function isolate(force, nodes, filter) {

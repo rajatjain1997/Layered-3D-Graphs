@@ -33,19 +33,6 @@ kue.app.listen(config.get('server').kue);
 
 var neoQueue = kue.createQueue();
 
-neoQueue.process('neo4j', function(job, done) {
-	var session = driver.session();
-	session.run(job.data.request, job.data.params)
-		.then(r => {
-			session.close();
-			done();
-		})
-		.catch(err => {
-			session.close();
-			done(err);
-		});
-});
-
 //Routes
 
 app.get('/', function(req, res) {
@@ -59,12 +46,33 @@ app.get('/', function(req, res) {
 	});
 });
 
+//Socket Configuration
+
 io.on('connection', function(socket) {
+
+	neoQueue.process('neo4j', function(job, done) {
+		if(job.data.end) {
+			socket.emit('neo4j', {});
+			done();
+			return;
+		}
+		var session = driver.session();
+		session.run(job.data.request, job.data.params)
+			.then(r => {
+				session.close();
+				done();
+			})
+			.catch(err => {
+				session.close();
+				done(err);
+			});
+	});
+
 	socket.on('/neo4j/reset', function(data) {
 		neoQueue.create('neo4j', {
 			request: "Match (n) detach delete n",
 			params: {}
-		}).save();
+		}).priority(-15).save();
 		nodesprocessed = 0;
 		edgesprocessed = 0;
 	});
@@ -88,6 +96,11 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "CREATE INDEX ON :Node(id)",
 			params: {}
+		}).save();
+	});
+	socket.on('/neo4j/endtransmission', function(data) {
+		neoQueue.create('neo4j', {
+			end: true
 		}).save();
 	});
 });
