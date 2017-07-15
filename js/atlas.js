@@ -100,7 +100,7 @@ d3.json("../data/"+data+".json", function(error, graph) {
 simulation.on("end", function() {
   log("Queuing Up requests to neo4j");
   var nodePos=simulation.nodes();
-  var edgePos=simulation.force("link").links();  
+  var edgePos=simulation.force("link").links();
 
   socket.emit('/neo4j/reset', {});
 
@@ -119,8 +119,10 @@ simulation.on("end", function() {
   log("Waiting for neo4J to load everything");
 });
 
-socket.on("neo4j", function(data) {
+socket.on("neo4j", function(data, callback) {
+  console.log("Here");
   loading_screen.finish();
+  callback();
   //Write shiny app code here. You can put up an iframe using d3 or something
 });
 

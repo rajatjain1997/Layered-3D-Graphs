@@ -52,8 +52,9 @@ io.on('connection', function(socket) {
 
 	neoQueue.process('neo4j', function(job, done) {
 		if(job.data.end) {
-			socket.emit('neo4j', {});
-			done();
+			socket.emit('neo4j', {}, function() {
+				done();
+			});
 			return;
 		}
 		var session = driver.session();
