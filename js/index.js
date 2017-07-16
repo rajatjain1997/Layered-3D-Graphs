@@ -11,9 +11,8 @@ const io = require('socket.io')(server);
 
 const port = config.get('server').port;
 
-//Defining Neo4J connections
+//Defining Neo4J counters
 
-const driver = neo4j.driver(config.get('neo4j').bolt, neo4j.auth.basic(config.get('neo4j').username, config.get('neo4j').password));
 var nodesprocessed = 0;
 var edgesprocessed = 0;
 
@@ -31,7 +30,10 @@ app.set('view engine', 'html');
 
 kue.app.listen(config.get('server').kue);
 
-var neoQueue = kue.createQueue();
+var neoQueue = kue.createQueue({
+	redis: config.get('redis').port,
+	host: config.get('redis').host
+});
 
 //Routes
 
@@ -46,25 +48,31 @@ app.get('/', function(req, res) {
 	});
 });
 
+app.get('/neo4j', function(req, res) {
+	res.send({"Nodes": nodesprocessed, "Edges": edgesprocessed});
+});
+
 //Socket Configuration
 
 io.on('connection', function(socket) {
 
+	let driver = neo4j.driver(config.get('neo4j').bolt, neo4j.auth.basic(config.get('neo4j').username, config.get('neo4j').password));
+	let session = driver.session();
+
 	neoQueue.process('neo4j', function(job, done) {
 		if(job.data.end) {
+			session.close();
+			driver.close();
 			socket.emit('neo4j', {}, function() {
 				done();
 			});
 			return;
 		}
-		var session = driver.session();
 		session.run(job.data.request, job.data.params)
 			.then(r => {
-				session.close();
 				done();
 			})
 			.catch(err => {
-				session.close();
 				done(err);
 			});
 	});
@@ -104,11 +112,6 @@ io.on('connection', function(socket) {
 			end: true
 		}).save();
 	});
-});
-
-
-app.get('/neo4j', function(req, res) {
-	res.send({"Nodes": nodesprocessed, "Edges": edgesprocessed});
 });
 
 server.listen(port, function() {
