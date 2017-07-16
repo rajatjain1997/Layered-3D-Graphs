@@ -28,12 +28,14 @@ app.set('view engine', 'html');
 
 //Defining Redis Kue
 
-kue.app.listen(config.get('server').kue);
-
 var neoQueue = kue.createQueue({
-	redis: config.get('redis').port,
-	host: config.get('redis').host
+	redis: {
+		port: 32768,
+		host: '192.168.99.100'
+	}
 });
+
+kue.app.listen(config.get('server').kue);
 
 //Routes
 
