@@ -75,7 +75,10 @@ io.on('connection', function(socket) {
 		if(job.data.end) {
 			session.close();
 			driver.close();
-			socket.emit('neo4j', {}, function() {
+			socket.emit('neo4j', {}, function(err) {
+				if(err) {
+					done(err);
+				}
 				done();
 			});
 			return;
@@ -102,7 +105,7 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
 			params: data.node
-		}).removeOnComplete( true ).save();
+		}).attempts(5).removeOnComplete( true ).save();
 		nodesprocessed++;
 	});
 	socket.on('/neo4j/edge', function(data) {
@@ -111,7 +114,7 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
 			params: {"source": source, "target": target}
-		}).removeOnComplete( true ).save();
+		}).attempts(5).removeOnComplete( true ).save();
 		edgesprocessed++;
 	});
 	socket.on('/neo4j/index', function(data) {
