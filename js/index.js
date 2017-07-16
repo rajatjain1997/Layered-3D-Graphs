@@ -5,6 +5,7 @@ const fs = require('fs');
 const app = express();
 const neo4j = require('neo4j-driver').v1;
 const config = require('nodejs-config') (path.resolve("../"));
+const redis = require('redis');
 const kue = require('kue');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -26,12 +27,17 @@ app.engine('.html', require('ejs').__express);
 app.set('views',  path.resolve("../html"));
 app.set('view engine', 'html');
 
-//Defining Redis Kue
+//Defining Redis & Kue
+
+const redisClient = redis.createClient({
+	host: config.get('redis').host,
+	port: config.get('redis').port
+});
 
 var neoQueue = kue.createQueue({
 	redis: {
-		port: 32768,
-		host: '192.168.99.100'
+		port: config.get('redis').port,
+		host: config.get('redis').host
 	}
 });
 
@@ -44,9 +50,13 @@ app.get('/', function(req, res) {
 	if(req.query.data) {
 		data = req.query.data;
 	}
-	res.render('index', {
-		port: port,
-		data: data
+	redisClient.flushdb(function(err,done) {
+		if(!err) {
+			res.render('index', {
+				port: port,
+				data: data
+			});
+		}
 	});
 });
 
@@ -83,15 +93,16 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "Match (n) detach delete n",
 			params: {}
-		}).priority(-15).save();
+		}).priority(-15).removeOnComplete( true ).save();
 		nodesprocessed = 0;
 		edgesprocessed = 0;
 	});
 	socket.on('/neo4j/node', function(data) {
+
 		neoQueue.create('neo4j', {
 			request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
 			params: data.node
-		}).save();
+		}).removeOnComplete( true ).save();
 		nodesprocessed++;
 	});
 	socket.on('/neo4j/edge', function(data) {
@@ -100,19 +111,19 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
 			params: {"source": source, "target": target}
-		}).save();
+		}).removeOnComplete( true ).save();
 		edgesprocessed++;
 	});
 	socket.on('/neo4j/index', function(data) {
 		neoQueue.create('neo4j', {
 			request: "CREATE INDEX ON :Node(id)",
 			params: {}
-		}).save();
+		}).removeOnComplete( true ).save();
 	});
 	socket.on('/neo4j/endtransmission', function(data) {
 		neoQueue.create('neo4j', {
 			end: true
-		}).save();
+		}).removeOnComplete( true ).save();
 	});
 });
 
