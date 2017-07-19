@@ -1,10 +1,18 @@
+var loading_screen = pleaseWait({
+  logo: "../images/logo.jpg",
+  backgroundColor: '#f46d3b',
+  loadingHtml: "<div class='sk-wave'><div class='sk-rect sk-rect1'></div><div class='sk-rect sk-rect2'></div><div class='sk-rect sk-rect3'></div><div class='sk-rect sk-rect4'></div><div class='sk-rect sk-rect5'></div></div><p class='loading-message'>Starting Up!</p>"
+});
+
+var socket = io('http://localhost:'+port);
+
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
 var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
 var timer;
-d3.json("../data/meta-academy.json", function(error, graph) {
+d3.json("../data/"+data+".json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;
@@ -73,8 +81,6 @@ d3.json("../data/meta-academy.json", function(error, graph) {
         }
       }
     }
-
-  log("No. of layers are: "+layers);
   
   for(var iter = 1; iter<=layers; iter++) {
     (function(iter) {
@@ -87,99 +93,37 @@ d3.json("../data/meta-academy.json", function(error, graph) {
 
   simulation.force("link")
     .links(graph.links);
-  timer = new Date();
   log("Beginning force calcuations and rendering");
 });
 
 
 simulation.on("end", function() {
-  timer= new Date()-timer;
-  log("Force calculations took "+timer/1000+" seconds. Rest of the time was spent in rendering.");
-  console.log("Forces done in " + timer);
+  log("Queuing Up requests to neo4j");
   var nodePos=simulation.nodes();
-  var edgePos=simulation.force("link").links();  
+  var edgePos=simulation.force("link").links();
 
-  $.post("http://localhost:80/neo4j/reset",{});
+  socket.emit('/neo4j/reset', {});
+
   for(var nodeitr = 0; nodeitr<nodePos.length; nodeitr++) {
-    // console.log(nodePos[nodeitr]);
-    $.post("http://localhost:80/neo4j/node", {"node": nodePos[nodeitr]});
+    socket.emit('/neo4j/node', {"node": nodePos[nodeitr]});
   }
 
-  $.post("http://localhost:80/neo4j/index", {});
+  socket.emit('/neo4j/index', {});
 
   for(var edgeitr = 0; edgeitr< edgePos.length; edgeitr++) {
-    $.post("http://localhost:80/neo4j/edge", {"edge": edgePos[edgeitr]});
+    socket.emit('/neo4j/edge', {"edge": edgePos[edgeitr]});
   }
 
-  //Old posting to server serialization
-  // $.post("http://localhost:80",
-  //   {data: "{\"nodes\":"+JSON.stringify(nodePos, null, 4)+",\"links\":"+ JSON.stringify(edgePos, null, 4)+"}"}
-  // );
+  socket.emit('/neo4j/endtransmission',{});
 
-  //Plotlty plots
-  // //console.log(simulation.force("link").links());
-  // var nodes = new Array();
+  log("Waiting for neo4J to load everything");
+});
 
-  // var i;
-  // for(i=0;i<nodePos.length;i++)
-  // {
-  //   nodes[i]={
-  //   x:[nodePos[i].x], y:[nodePos[i].y], z:[nodePos[i].z],
-  //   text:[nodePos[i].name],
-  //   mode: 'markers',
-  //   line: {
-  //     color: 10, 
-  //     width: 2
-  //   },
-  //   marker: {
-  //     size: 5,
-  //     line: {
-  //     color: 'rgba(217, 217, 217, 0.14)',
-  //     width: 0.5},
-  //     opacity: 0.8},
-  //   type: 'scatter3d'
-  // };
-  // }
-
-  // var edges = new Array();
-
-  // for(i=0;i<edgePos.length;i++)
-  // {
-  //   edges[i]={
-  //   x:[edgePos[i].source.x,edgePos[i].target.x], y:[edgePos[i].source.y,edgePos[i].target.y], z:[edgePos[i].source.z,edgePos[i].target.z],
-  //   mode: 'lines',
-  //   line: {
-  //     color: 10, 
-  //     width: 2
-  //   },
-  //   marker: {
-  //     size: 5,
-  //     line: {
-  //     color: 8,
-  //     width: 0.5},
-  //     opacity: 0.8},
-  //   type: 'scatter3d'
-  // };
-  // }
-  // var data = new Array();
-  
-  // for(i=0;i<nodePos.length;i++)
-  // {
-  //   data.push(nodes[i]);
-  // }
-
-  // for(i=0;i<edgePos.length;i++)
-  // {
-  //   data.push(edges[i]);
-  // }
-  
-  // var layout = {margin: {
-  //   l: 0,
-  //   r: 0,
-  //   b: 0,
-  //   t: 0
-  //   }};
-  // Plotly.newPlot('myDiv', data, layout);
+socket.on("neo4j", function(data, callback) {
+  console.log("Here");
+  loading_screen.finish();
+  callback();
+  //Write shiny app code here. You can put up an iframe using d3 or something
 });
 
 function isolate(force, nodes, filter) {
@@ -189,5 +133,5 @@ function isolate(force, nodes, filter) {
 }
 
 function log(msg) {
-  d3.select("#log").append("p").text(msg);
+  loading_screen.updateLoadingHtml("<div class='sk-wave'><div class='sk-rect sk-rect1'></div><div class='sk-rect sk-rect2'></div><div class='sk-rect sk-rect3'></div><div class='sk-rect sk-rect4'></div><div class='sk-rect sk-rect5'></div></div><p class='loading-message'>"+msg+"</p>")
 }

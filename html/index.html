@@ -5,12 +5,18 @@
 	<script src= "../js/d3.min.js"></script>
 	<script src="../js/d3-force-3d.bundle.min.js"></script>
 	<script src="../js/plotly-latest.min.js"></script>
-	<link rel="stylesheet" href="../css/index.css"/>
-	<title></title>
+	<script src="../js/socket.io.js"></script>
+	<link href="../css/loading.css" rel="stylesheet">
+	<link href="../css/please-wait.css" rel="stylesheet">
+	<title>Layered 3D graphs</title>
 </head>
 <body>
+<script type="text/javascript" src="../js/please-wait.min.js"></script>
+<script type="text/javascript">
+	var port = <%-port%>
+	var data = <%-data%>
+</script>
 <script src= "../js/atlas.js"></script>
-<div id="myDiv"></div>
 <div id="log"></div>
 </body>
 </html>
