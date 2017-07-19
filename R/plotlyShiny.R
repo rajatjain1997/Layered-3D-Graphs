@@ -1,8 +1,10 @@
 library(plotly)
 library(shiny)
 library("RNeo4j")
+library(rjson)
 
-graph=RNeo4j::startGraph("192.168.99.100:7474/db/data",username="neo4j",password="neo")
+neo4j.json <- rjson::fromJSON(file = "./../config/neo4j.json")
+graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(str)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
 
 nodes.x=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.x")))
 nodes.y=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.y")))
