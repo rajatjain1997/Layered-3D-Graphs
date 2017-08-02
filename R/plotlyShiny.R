@@ -4,7 +4,7 @@ library("RNeo4j")
 library(rjson)
 
 neo4j.json <- rjson::fromJSON(file = "./../config/neo4j.json")
-graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(str)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
+graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(neo4j.json$bolt)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
 
 nodes.x=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.x")))
 nodes.y=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.y")))
@@ -56,7 +56,7 @@ server <- function(input, output, session) {
       plot_ly(x=0,y=0,z=0,type="scatter3d",mode='markers',marker=list(size=5,color='black')) 
     }else if (!(is.null(d) || is.null(d$key)) && display != d$key){
       display <<- d$key
-      pathQuery <- paste('MATCH p=()-[*0..]->(n:Node {id:"',as.character(d$key),'"})-[*0..]->() return p',sep="")
+      pathQuery <- paste('MATCH p=()-[*0..]->(n:Node {id:',as.character(d$key),'})-[*0..]->() return p',sep="")
       path <- RNeo4j::getPaths(graph,pathQuery)
       nodes.path <- lapply(path,nodes)
       
@@ -83,7 +83,8 @@ server <- function(input, output, session) {
         }
         count=count+1
       }
-      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='red'), text = nodes.names, key = nodes.id,height=700,width=1500)
+      
+      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='red'), text = nodes.names, key = nodes.id)
       plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='yellow'))
       subplot(plotlyObject1,plotlyObject2)
     } else if (display != search){
