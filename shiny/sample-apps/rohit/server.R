@@ -1,9 +1,8 @@
 library(plotly)
 library(shiny)
 library("RNeo4j")
-library(rjson)
 
-neo4j.json <- rjson::fromJSON(file = "./../config/neo4j.json")
+neo4j.json <- rjson::fromJSON(file = "./../../../config/neo4j.json")
 graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(neo4j.json$bolt)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
 
 nodes.x=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.x")))
@@ -29,14 +28,7 @@ edges.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=n
 display <- ""
 action <- 0
 
-ui <- fluidPage(
-  textInput("search", "Search", ""),
-  actionButton("enter", "Go!"),
-  plotlyOutput("plot"),
-  plotlyOutput("click")
-)
-
-server <- function(input, output, session) {
+function(input, output, session) {
   
   output$plot <- renderPlotly({
     object1 <- plot_ly(x = nodes.x, y = nodes.y, z = nodes.z, type = "scatter3d", mode='markers', hoverinfo="text+z", marker= list(size=2,color='red'), text=nodes.text, key=nodes.id)
@@ -124,5 +116,3 @@ server <- function(input, output, session) {
     }
   })
 }
-
-runApp(shinyApp(ui, server))
