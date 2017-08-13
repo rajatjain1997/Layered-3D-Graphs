@@ -1,4 +1,6 @@
 tmp
 config
 node_modules
+package-lock.json
+config
 R/.Rhistory
