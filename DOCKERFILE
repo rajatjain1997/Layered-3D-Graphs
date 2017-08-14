@@ -11,9 +11,9 @@ RUN echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources
 RUN apt-get update
 RUN apt-get install neo4j
 RUN apt-get install openjdk-8-jre
-RUN ["chmod", "+x", "/initialize.sh"]
+RUN ["chmod", "+x", "/bin/initialize.sh"]
 
-ENTRYPOINT ["/initialize.sh"]
+ENTRYPOINT ["/bin/initialize.sh"]
 
 EXPOSE 8000
 EXPOSE 4000
