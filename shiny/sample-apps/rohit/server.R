@@ -29,6 +29,8 @@ function(input, output, session) {
   nodes.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
   edges.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
   
+  updateSelectInput(session,"search",choices=nodes.text)
+
   output$plot <- renderPlotly({
     object1 <- plot_ly(x = nodes.x, y = nodes.y, z = nodes.z, type = "scatter3d", mode='markers', hoverinfo="text+z", marker= list(size=2,color='#d50000'), text=nodes.text, key=nodes.id)
     object2 <- plot_ly(x = edge.x, y = edge.y, z = edge.z,type="scatter3d" ,mode='lines', hoverinfo='none', opacity = 0.5, line=list(color='#f46d3b'))
