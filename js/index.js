@@ -84,6 +84,9 @@ io.on('connection', function(socket) {
 				}
 				done();
 			});
+			setTimeout(function() {
+				done("Socket Unresponsive");
+			}, 5000);
 			return;
 		}
 		session.run(job.data.request, job.data.params)
@@ -129,7 +132,7 @@ io.on('connection', function(socket) {
 	socket.on('/neo4j/endtransmission', function(data) {
 		neoQueue.create('neo4j', {
 			end: true
-		}).removeOnComplete( true ).save();
+		}).removeOnComplete( true ).attempts(50).save();
 	});
 });
 

@@ -6,33 +6,15 @@ var loading_screen = pleaseWait({
 
 var socket = io('http://localhost:'+port);
 
-var color = d3.scaleOrdinal(d3.schemeCategory20);
-
 var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
   .force("center", d3.forceCenter(0,0));
-var timer;
+
 d3.json("../data/"+data+".json", function(error, graph) {
   if (error) throw error;
 
   var layers=1;
   var i;
-  // for(i=0;i<graph.links.length;i++)
-  // {
-  //   if(graph.nodes[graph.links[i].source-1].fz>=graph.nodes[graph.links[i].target-1].fz)
-  //     {
-  //       graph.nodes[graph.links[i].target-1].fz=graph.nodes[graph.links[i].source-1].fz+1;
-  //       if(graph.nodes[graph.links[i].target-1].fz>layers)
-  //       layers=graph.nodes[graph.links[i].target-1].fz;
-  //     }
-  //     for(j=0;j<graph.links.length;j++)
-  //     {
-  //       if(graph.nodes[graph.links[j].source-1].fz>=graph.nodes[graph.links[j].target-1].fz)
-  //         graph.nodes[graph.links[j].target-1].fz=graph.nodes[graph.links[j].source-1].fz+1;
-  //       if(graph.nodes[graph.links[j].target-1].fz>layers)
-  //       layers=graph.nodes[graph.links[j].target-1].fz;
-  //     }   
-  // }
   log("Layering Algorithm Initiated...");
 
     var source = new Array();
@@ -93,12 +75,12 @@ d3.json("../data/"+data+".json", function(error, graph) {
 
   simulation.force("link")
     .links(graph.links);
-  log("Beginning force calcuations and rendering");
+  log("Beginning force calcuations");
 });
 
 
 simulation.on("end", function() {
-  log("Queuing Up requests to neo4j");
+  log("Queuing Up requests to database");
   var nodePos=simulation.nodes();
   var edgePos=simulation.force("link").links();
 
@@ -116,14 +98,13 @@ simulation.on("end", function() {
 
   socket.emit('/neo4j/endtransmission',{});
 
-  log("Waiting for neo4J to load everything");
+  log("Waiting for the database to load everything");
 });
 
 socket.on("neo4j", function(data, callback) {
-  console.log("Here");
   loading_screen.finish();
   callback();
-  //Write shiny app code here. You can put up an iframe using d3 or something
+  window.location.href = "http://localhost:4000";
 });
 
 function isolate(force, nodes, filter) {
