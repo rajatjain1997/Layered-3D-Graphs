@@ -1,5 +1,5 @@
 {
-	"bolt": "bolt://172.17.33.74",
+	"bolt": "bolt://localhost",
 	"username": "neo4j",
 	"password": "neo"
 }
