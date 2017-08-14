@@ -123,7 +123,7 @@ socket.on("neo4j", function(data, callback) {
   console.log("Here");
   loading_screen.finish();
   callback();
-  //Write shiny app code here. You can put up an iframe using d3 or something
+  window.location.href = "http://localhost:4000";
 });
 
 function isolate(force, nodes, filter) {
