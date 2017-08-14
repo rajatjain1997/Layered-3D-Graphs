@@ -5,9 +5,11 @@ const fs = require('fs');
 const app = express();
 const neo4j = require('neo4j-driver').v1;
 const config = require('nodejs-config') (path.resolve("../"));
+const redis = require('redis');
 const kue = require('kue');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const R = require('r-script')
 
 const port = config.get('server').port;
 
@@ -26,14 +28,21 @@ app.engine('.html', require('ejs').__express);
 app.set('views',  path.resolve("../html"));
 app.set('view engine', 'html');
 
-//Defining Redis Kue
+//Defining Redis & Kue
 
-kue.app.listen(config.get('server').kue);
+const redisClient = redis.createClient({
+	host: config.get('redis').host,
+	port: config.get('redis').port
+});
 
 var neoQueue = kue.createQueue({
-	redis: config.get('redis').port,
-	host: config.get('redis').host
+	redis: {
+		port: config.get('redis').port,
+		host: config.get('redis').host
+	}
 });
+
+kue.app.listen(config.get('server').kue);
 
 //Routes
 
@@ -42,9 +51,13 @@ app.get('/', function(req, res) {
 	if(req.query.data) {
 		data = req.query.data;
 	}
-	res.render('index', {
-		port: port,
-		data: data
+	redisClient.flushdb(function(err,done) {
+		if(!err) {
+			res.render('index', {
+				port: port,
+				data: data
+			});
+		}
 	});
 });
 
@@ -61,9 +74,14 @@ io.on('connection', function(socket) {
 
 	neoQueue.process('neo4j', function(job, done) {
 		if(job.data.end) {
+			var out = R("./../R/plotlyShiny.R");
+			console.log(out);
 			session.close();
 			driver.close();
-			socket.emit('neo4j', {}, function() {
+			socket.emit('neo4j', {}, function(err) {
+				if(err) {
+					done(err);
+				}
 				done();
 			});
 			setTimeout(function() {
@@ -84,15 +102,16 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "Match (n) detach delete n",
 			params: {}
-		}).priority(-15).save();
+		}).priority(-15).removeOnComplete( true ).save();
 		nodesprocessed = 0;
 		edgesprocessed = 0;
 	});
 	socket.on('/neo4j/node', function(data) {
+
 		neoQueue.create('neo4j', {
 			request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
 			params: data.node
-		}).save();
+		}).attempts(5).removeOnComplete( true ).save();
 		nodesprocessed++;
 	});
 	socket.on('/neo4j/edge', function(data) {
@@ -101,19 +120,19 @@ io.on('connection', function(socket) {
 		neoQueue.create('neo4j', {
 			request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
 			params: {"source": source, "target": target}
-		}).save();
+		}).attempts(5).removeOnComplete( true ).save();
 		edgesprocessed++;
 	});
 	socket.on('/neo4j/index', function(data) {
 		neoQueue.create('neo4j', {
 			request: "CREATE INDEX ON :Node(id)",
 			params: {}
-		}).save();
+		}).removeOnComplete( true ).save();
 	});
 	socket.on('/neo4j/endtransmission', function(data) {
 		neoQueue.create('neo4j', {
 			end: true
-		}).attempts(50).save();
+		}).removeOnComplete( true ).attempts(50).save();
 	});
 });
 
