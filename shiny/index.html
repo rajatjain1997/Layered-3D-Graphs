@@ -11,15 +11,30 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    height: auto;
+    height: 100px;
+    padding: 10px;
+    width: auto;
+    }
+    #credits{
+      position: absolute;
+      padding: 50px 0px 0px 0px;
+      border: 0px;
+      /*bottom: 0px;*/
+      text-align: center;
+      width: 100%;
+      left: 0;
+      right: 0;
+      color: white;
     }
   </style>
 </head>
-<body bgcolor="#ffaa00">
+<body bgcolor="#f46d3b">
   <img src="logo.jpg" class="center">
   <div id="shiny" align="center">
-    <iframe src="./sample-apps/rohit/" style="position: relative; top: 10px border: 10px solid #AAA; width: 1500px; height: 800px"></iframe>
+    <iframe src="./sample-apps/rohit/" style="position: relative; top: 10px; border: none; border-radius: 2px; width: 80%; height: 650px; box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);"></iframe>
+  </div>
+  <div id="credits">
+    <p>Layered 3D Graphs are based on work by Nagarjuna G et al. in the paper "Latitude and Longitude of a Semantic System from a Directed Graph of Dependencies".<br> Simulation by: Rajat Jain and Rohit Ghivdonde.</p>
   </div>
 </body>
 </html>

@@ -2,37 +2,38 @@ library(plotly)
 library(shiny)
 library("RNeo4j")
 
-neo4j.json <- rjson::fromJSON(file = "./../../../config/neo4j.json")
-graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(neo4j.json$bolt)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
-
-nodes.x=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.x")))
-nodes.y=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.y")))
-nodes.z=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.z")))
-nodes.text=(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.name")))
-nodes.id=(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.id")))
-
-edge.source.x=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN p.x")))
-edge.source.y=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN p.y")))
-edge.source.z=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN p.z")))
-edge.target.x=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN a.x")))
-edge.target.y=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN a.y")))
-edge.target.z=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN a.z")))
-
-edge.x=c(rbind(edge.source.x,edge.target.x,rep('NA',length(edge.source.x))))
-edge.y=c(rbind(edge.source.y,edge.target.y,rep('NA',length(edge.source.x))))
-edge.z=c(rbind(edge.source.z,edge.target.z,rep('NA',length(edge.source.x))))
-
-nodes.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
-edges.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
-
-display <- ""
-action <- 0
-
 function(input, output, session) {
+  neo4j.json <- rjson::fromJSON(file = "./../../../config/neo4j.json")
+  graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(neo4j.json$bolt)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
+
+  display <- ""
+  action <- 0
   
+  nodes.x=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.x")))
+  nodes.y=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.y")))
+  nodes.z=as.numeric(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.z")))
+  nodes.text=(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.name")))
+  nodes.id=(unlist(RNeo4j::getNodes(graph,"MATCH (p:Node) RETURN p.id")))
+
+  edge.source.x=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN p.x")))
+  edge.source.y=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN p.y")))
+  edge.source.z=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN p.z")))
+  edge.target.x=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN a.x")))
+  edge.target.y=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN a.y")))
+  edge.target.z=as.numeric(unlist(RNeo4j::getRels(graph,"MATCH (p:Node)-[:pre]->(a:Node) RETURN a.z")))
+
+  edge.x=c(rbind(edge.source.x,edge.target.x,rep('NA',length(edge.source.x))))
+  edge.y=c(rbind(edge.source.y,edge.target.y,rep('NA',length(edge.source.x))))
+  edge.z=c(rbind(edge.source.z,edge.target.z,rep('NA',length(edge.source.x))))
+
+  nodes.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
+  edges.dataFrame <- data.frame(x=nodes.x,y=nodes.y,z=nodes.z,name=nodes.text,id=nodes.id)
+  
+  updateSelectInput(session,"search",choices=nodes.text)
+
   output$plot <- renderPlotly({
-    object1 <- plot_ly(x = nodes.x, y = nodes.y, z = nodes.z, type = "scatter3d", mode='markers', hoverinfo="text+z", marker= list(size=2,color='red'), text=nodes.text, key=nodes.id)
-    object2 <- plot_ly(x = edge.x, y = edge.y, z = edge.z,type="scatter3d" ,mode='lines', hoverinfo='none', opacity=0.2, line=list(color='cyan'))
+    object1 <- plot_ly(x = nodes.x, y = nodes.y, z = nodes.z, type = "scatter3d", mode='markers', hoverinfo="text+z", marker= list(size=2,color='#d50000'), text=nodes.text, key=nodes.id)
+    object2 <- plot_ly(x = edge.x, y = edge.y, z = edge.z,type="scatter3d" ,mode='lines', hoverinfo='none', opacity = 0.5, line=list(color='#f46d3b'))
     combinedObj<-subplot(object1,object2)
     })
   
@@ -76,8 +77,8 @@ function(input, output, session) {
         count=count+1
       }
       
-      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='red'), text = nodes.names, key = nodes.id)
-      plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='yellow'))
+      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='#d50000'), text = nodes.names, key = nodes.id)
+      plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='#f46d3b'))
       subplot(plotlyObject1,plotlyObject2)
     } else if (display != search){
       display <<- search
@@ -110,8 +111,8 @@ function(input, output, session) {
         count=count+1
       }
       
-      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='red'), text = nodes.names, key = nodes.id)
-      plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='yellow'))
+      plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='#d50000'), text = nodes.names, key = nodes.id)
+      plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='#f46d3b'))
       subplot(plotlyObject1,plotlyObject2)
     }
   })
