@@ -1,7 +1,7 @@
 #!/bin/bash
 
 redis-server &
-neo4j &
+service neo4j start &
 cs js/
 node index.js &
 shiny-server
