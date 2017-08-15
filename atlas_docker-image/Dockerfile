@@ -18,7 +18,6 @@ RUN wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add 
 RUN echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources.list.d/neo4j.list
 RUN apt-get update
 RUN apt-get install neo4j
-<<<<<<< HEAD
 
 #R#
 RUN apt-get install r-base
