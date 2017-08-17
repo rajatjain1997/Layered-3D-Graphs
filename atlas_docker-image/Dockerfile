@@ -35,7 +35,7 @@ RUN su - -c "R -e \"devtools::install_github('nicolewhite/RNeo4j')\""
 RUN apt-get -y install gdebi-core
 RUN wget https://download3.rstudio.org/ubuntu-12.04/x86_64/shiny-server-1.5.3.838-amd64.deb
 RUN gdebi shiny-server-1.5.3.838-amd64.deb
-RUN cp ./config/shiny-server.conf /etc/shiny-server/shiny-server.conf
+ADD ./config/shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 
 RUN apt-get -y install openjdk-8-jre
