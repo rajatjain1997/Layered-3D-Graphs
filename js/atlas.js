@@ -17,52 +17,55 @@ d3.json("../data/"+data+".json", function(error, graph) {
   var i;
   log("Layering Algorithm Initiated...");
 
-    var source = new Array();
-    var target = new Array();
+  var source = new Array();
+  var target = new Array();
 
-    for(i=0;i<graph.nodes.length;i++)
+  for(i=0;i<graph.nodes.length;i++)
+  {
+    graph.nodes[i].x = 0;
+    graph.nodes[i].y = 0;
+    graph.nodes[i].fz = 1;
+    source[i] = new Array();
+    target[i] = new Array();
+  }
+
+  for(i=0;i<graph.links.length;i++)
+  {
+    source[graph.links[i].target-1].push(graph.links[i].source);
+    target[graph.links[i].source-1].push(graph.links[i].target);
+  }
+
+  var noOfChild = new Array();
+  var queue = new Array();
+
+  for(i=0;i<graph.nodes.length;i++)
+  {
+    noOfChild[i]=0;
+    if(source[i].length==0)
     {
-      source[i] = new Array();
-      target[i] = new Array();
+      queue.push(graph.nodes[i].id);
     }
+  } 
 
-    for(i=0;i<graph.links.length;i++)
+  while(queue.length!=0)
+  {
+    var ele = queue.pop();
+    for(i=0;i<target[ele-1].length;i++)
     {
-      source[graph.links[i].target-1].push(graph.links[i].source);
-      target[graph.links[i].source-1].push(graph.links[i].target);
-    }
+      noOfChild[target[ele-1][i]-1]++;
+      if(graph.nodes[target[ele-1][i]-1].fz<(graph.nodes[ele-1].fz+1))
+      graph.nodes[target[ele-1][i]-1].fz=graph.nodes[ele-1].fz+1;
+      if(graph.nodes[target[ele-1][i]-1].fz>layers)
+          {
+            layers=graph.nodes[target[ele-1][i]-1].fz;
+          }
 
-    var noOfChild = new Array();
-    var queue = new Array();
-
-    for(i=0;i<graph.nodes.length;i++)
-    {
-      noOfChild[i]=0;
-      if(source[i].length==0)
+      if(noOfChild[target[ele-1][i]-1]==source[target[ele-1][i]-1].length)
       {
-        queue.push(graph.nodes[i].id);
-      }
-    } 
-
-    while(queue.length!=0)
-    {
-      var ele = queue.pop();
-      for(i=0;i<target[ele-1].length;i++)
-      {
-        noOfChild[target[ele-1][i]-1]++;
-        if(graph.nodes[target[ele-1][i]-1].fz<(graph.nodes[ele-1].fz+1))
-        graph.nodes[target[ele-1][i]-1].fz=graph.nodes[ele-1].fz+1;
-        if(graph.nodes[target[ele-1][i]-1].fz>layers)
-            {
-              layers=graph.nodes[target[ele-1][i]-1].fz;
-            }
-
-        if(noOfChild[target[ele-1][i]-1]==source[target[ele-1][i]-1].length)
-        {
-          queue.push(target[ele-1][i]);
-        }
+        queue.push(target[ele-1][i]);
       }
     }
+  }
   
   for(var iter = 1; iter<=layers; iter++) {
     (function(iter) {
