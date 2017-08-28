@@ -40,7 +40,7 @@ Layered-3D-Graphs has been tested with more than 30000 nodes and 70000 edges! It
 
 The backend is written keeping big graphs in mind, and employs the use of nodejs, redis, neo4j and shiny. Each component achieves separate purposes, as described below.
 
-- **Nodejs:** The main page is hosted on an express app, which does all the calculations related to forces on the graph on the client machine and sends the calculated information to the server. This information is sent through sockets as they maintain persistent connections and are thus able to consistently post messages to the server without the overhead of sending the headers and waiting for the response per request.\
+- **Nodejs:** The main page is hosted on an express app, which does all the calculations related to forces on the graph on the client machine and sends the calculated information to the server. This information is sent through sockets as they maintain persistent connections and are thus able to consistently post messages to the server without the overhead of sending the headers and waiting for the response per request. 	
 
 - **Redis:** Loading all the data in neo4j takes time as queries on databases are slower than the speed at which the server is receiving the database insertion requests. Kue is used to maintain an asynchronous queue on redis which acts as a buffer from the server where queries are stored until neo4j is ready to execute them.
 
@@ -50,4 +50,8 @@ The backend is written keeping big graphs in mind, and employs the use of nodejs
 
 ## UI
 
+## Use Cases
+
 ## License
+
+All Layered-3D-Graphs source code is made available under the terms of the GNU Affero Public License (GNU AGPLv3).

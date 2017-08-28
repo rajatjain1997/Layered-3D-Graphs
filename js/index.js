@@ -9,7 +9,6 @@ const redis = require('redis');
 const kue = require('kue');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const R = require('r-script')
 
 const port = config.get('server').port;
 
@@ -74,8 +73,6 @@ io.on('connection', function(socket) {
 
 	neoQueue.process('neo4j', function(job, done) {
 		if(job.data.end) {
-			var out = R("./../R/plotlyShiny.R");
-			console.log(out);
 			session.close();
 			driver.close();
 			socket.emit('neo4j', {}, function(err) {
