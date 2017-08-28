@@ -41,10 +41,13 @@ function(input, output, session) {
     d <- event_data("plotly_click")
     search <- NULL
     input$enter
-    if(action<input$enter) {
+    
+    if(action<input$enter) 
+    {
       search <- input$search
       action <<- input$enter
     }
+    
     if ((is.null(d) || is.null(d$key)) && is.null(search)){
       plot_ly(x=0,y=0,z=0,type="scatter3d",mode='markers',marker=list(size=5,color='black')) 
     }else if (!(is.null(d) || is.null(d$key)) && display != d$key){
@@ -67,6 +70,7 @@ function(input, output, session) {
         listNodesZ <- unlist(lapply(nodes.path[[count]],'[[','z'))
         names <- unlist(lapply(nodes.path[[count]],'[[','name'))
         ids <- unlist(lapply(nodes.path[[count]],'[[','id'))
+        
         if(length(listNodesX)>1){  
           xValues <- c(xValues,'NA',listNodesX)
           yValues <- c(yValues,'NA',listNodesY)
@@ -74,13 +78,14 @@ function(input, output, session) {
           nodes.names <- c(nodes.names,'NA',names)
           nodes.id <- c(nodes.id,'NA',ids)
         }
+        
         count=count+1
       }
       
       plotlyObject1 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='markers', hoverinfo = 'text+z', marker = list(size=2,color='#d50000'), text = nodes.names, key = nodes.id)
       plotlyObject2 <- plot_ly(x = xValues, y = yValues, z = zValues, type = "scatter3d", mode ='lines', hoverinfo = 'none', line = list(color='#f46d3b'))
       subplot(plotlyObject1,plotlyObject2)
-    } else if (display != search){
+    }else if (display != search){
       display <<- search
       pathQuery <- paste('MATCH p=()-[*0..]->(n:Node {name:"',as.character(search),'"})-[*0..]->() return p',sep="")
       
@@ -101,6 +106,7 @@ function(input, output, session) {
         listNodesZ <- unlist(lapply(nodes.path[[count]],'[[','z'))
         names <- unlist(lapply(nodes.path[[count]],'[[','name'))
         ids <- unlist(lapply(nodes.path[[count]],'[[','id'))
+       
         if(length(listNodesX)>1){  
           xValues <- c(xValues,'NA',listNodesX)
           yValues <- c(yValues,'NA',listNodesY)
@@ -108,6 +114,7 @@ function(input, output, session) {
           nodes.names <- c(nodes.names,'NA',names)
           nodes.id <- c(nodes.id,'NA',ids)
         }
+       
         count=count+1
       }
       
