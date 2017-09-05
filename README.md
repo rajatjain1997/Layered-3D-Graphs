@@ -26,10 +26,10 @@ Layered-3D-Graphs can scale to huge datasets easily, with most of the time taken
 
 Layered-3D-Graph is available as a docker image. The following are the ports used by the image:
 
-Port | Task
----- | -------------------
-8000 | Dataset processing
-4000 | Graph Plotter
+Container Port | Host Port | Task
+---- | ---- | -------------------
+8000 | ANY  | Dataset processing
+4000 | 4000 | Graph Plotter
 
 To run the image, use:
 
