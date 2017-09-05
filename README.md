@@ -2,6 +2,8 @@
 
 Layered-3D-Graphs plots 3D force directed and layered graphs on the basis of a **pre-requisite of** relationship between nodes.
 
+## Introduction
+
 The graph is rendered using the following sequence of steps:
 
 1. Read the data and initialize each node to **(x = 0, y = 0, layer = 1)**, where layer is plotted on the z-axis.
@@ -34,7 +36,11 @@ Each relationship in **links** should have the following keys:
 - source = *The node from which the link orginates*
 - destination = *The node on which the link ends*
 
-Layered-3D-Graphs has been tested with more than 30000 nodes and 70000 edges! It should not be a problem to big graphs!
+Once prepared, the data file can be placed in the docker container's **data** volume and can be plotted by visiting the web interface at
+
+	localhost:8000/?data="FILE_NAME"
+
+Layered-3D-Graphs has been tested with more than 30000 nodes and 70000 edges! It's easy to plot big graphs!
 
 ## Backend Design
 
@@ -50,7 +56,17 @@ The backend is written keeping big graphs in mind, and employs the use of nodejs
 
 ## UI
 
+Once plotting is completed, Layered-3D-Graphs offers a simple web-interface which allows the user to search and plot the dependecies and parents of each node in the graph by either doing a **full test search** or by **clicking any node in the graph**. The results, once computed, are available in a sub-graph.
+
+Both the graphs and the subgraphs are fully interactive and support search functionality.
+
+The graph is persistently stored and can be generated again without recalculations by visiting
+
+	localhost:4000
+
 ## Use Cases
+
+
 
 ## License
 
