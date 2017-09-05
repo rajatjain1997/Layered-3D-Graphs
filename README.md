@@ -24,6 +24,19 @@ Layered-3D-Graphs can scale to huge datasets easily, with most of the time taken
 
 ## Installation
 
+Layered-3D-Graph is available as a docker image. The following are the ports used by the image:
+
+Port | Task
+---- | -------------------
+8000 | Dataset processing
+4000 | Graph Plotter
+
+To run the image, use:
+
+	docker run -p 4000:4000 -p 8000:8000 --volume=$HOME/Layered-3D-Graphs/data:/code/data --name=layered3dgraphs layered3dgraphs
+
+This binds the data volume of the container to the host machine to allow for easy input of data.
+
 ## Creating/Preparing Data
 
 Layered-3D-Graphs accepts JSON format graphs, with the key **"nodes"** holding an array of all vertix objects and **"links"** holding an array denoting the relationships.
