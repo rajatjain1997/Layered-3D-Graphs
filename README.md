@@ -33,7 +33,10 @@ Port | Task
 
 To run the image, use:
 
-	docker run -p 4000:4000 -p 8000:8000 --volume=$HOME/Layered-3D-Graphs/data:/code/data --name=layered3dgraphs layered3dgraphs
+	docker run \
+		-p 4000:4000 -p 8000:8000 \
+		--volume=$HOME/Layered-3D-Graphs/data:/code/data \
+		--name=layered3dgraphs layered3dgraphs
 
 This binds the data volume of the container to the host machine to allow for easy input of data.
 
