@@ -10,23 +10,24 @@ RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update
 
 
-#NodeJS
+#NodeJS#
 RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get -y install nodejs
 
-#Redis
+#Redis#
 RUN sed -i "s/^exit 101$/exit 0/" /usr/sbin/policy-rc.d
 RUN apt-get -y install redis-server
 
-#Java
+#Java#
 RUN apt-get -y install openjdk-8-jre  
 
-#Neo4J
+#Neo4J#
 RUN apt-get -y install wget
 RUN wget -O - https://debian.neo4j.org/neotechnology.gpg.key | sudo apt-key add -
 RUN echo 'deb https://debian.neo4j.org/repo stable/' | sudo tee /etc/apt/sources.list.d/neo4j.list
 RUN apt-get update
 RUN apt-get -y install neo4j
+RUN bin/neo4j-admin set-initial-password neo
 
 #R#
 RUN apt-get -y install r-base
