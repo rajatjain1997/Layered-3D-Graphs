@@ -9,9 +9,7 @@ The graph is rendered using the following sequence of steps:
 1. Read the data and initialize each node to **(x = 0, y = 0, layer = 1)**, where layer is plotted on the z-axis.
 
 2. Calculate the layer of each node using the "pre-requisite of" relationship. Each node has a layer assigned to it such that, 
-
 	a. No two nodes related by an edge are on the same level.
-
 	b. For each node at layer n, there exists at least one node at layer n-1 which is related to the aforementioned node.
 
 3. Apply electrostatic repulsive forces between each node in a particular layer and give each edge a spring force.
@@ -52,11 +50,21 @@ Each relationship in **links** should have the following keys:
 - source = *The node from which the link orginates*
 - destination = *The node on which the link ends*
 
-Once prepared, the data file can be placed in the docker container's **data** volume and can be plotted by visiting the web interface at
+Once prepared, the data file can be placed in the docker container's **data** volume (bound at *$HOME/Layered-3D-Graphs/data*) and can be plotted by visiting the web interface at
 
 	localhost:8000/?data="FILE_NAME"
 
 Layered-3D-Graphs has been tested with more than 30000 nodes and 70000 edges! It's easy to plot big graphs!
+
+## UI
+
+Once plotting is completed, Layered-3D-Graphs offers a simple web-interface which allows the user to search and plot the dependecies and parents of each node in the graph by either doing a **full test search** or by **clicking any node in the graph**. The results, once computed, are available in a sub-graph.
+
+Both the graphs and the subgraphs are fully interactive and support the search functionality.
+
+The graph is persistently stored in a database inside the container. Therefore, it can be generated again without recalculations by visiting
+
+	localhost:4000
 
 ## Backend Design
 
@@ -69,16 +77,6 @@ The backend is written keeping big graphs in mind, and employs the use of nodejs
 - **Neo4j:** Neo4j is the database that is used to store persistent information about the last graph calculated by Layered-3D-Graphs. This helps in fast access of the last graph generated any number of times at the cost of the initial time taken in order to construct the database.
 
 - **Shiny:** The shiny server uses the power of plotly to batch plot the entire graph present in the database. It also hosts the search engine and the entire UI of the graph rendering page, and if directly visited skips the recalculations.
-
-## UI
-
-Once plotting is completed, Layered-3D-Graphs offers a simple web-interface which allows the user to search and plot the dependecies and parents of each node in the graph by either doing a **full test search** or by **clicking any node in the graph**. The results, once computed, are available in a sub-graph.
-
-Both the graphs and the subgraphs are fully interactive and support search functionality.
-
-The graph is persistently stored and can be generated again without recalculations by visiting
-
-	localhost:4000
 
 ## Use Cases
 
