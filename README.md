@@ -9,9 +9,8 @@ The graph is rendered using the following sequence of steps:
 1. Read the data and initialize each node to **(x = 0, y = 0, layer = 1)**, where layer is plotted on the z-axis.
 
 2. Calculate the layer of each node using the "pre-requisite of" relationship. Each node has a layer assigned to it such that, 
-	a. No two nodes related by an edge are on the same level.
-	
-	b. For each node at layer n, there exists at least one node at layer n-1 which is related to the aforementioned node.
+	* No two nodes related by an edge are on the same level.
+	* For each node at layer n, there exists at least one node at layer n-1 which is related to the aforementioned node.
 
 3. Apply electrostatic repulsive forces between each node in a particular layer and give each edge a spring force.
 
