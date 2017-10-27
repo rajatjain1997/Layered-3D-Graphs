@@ -2,8 +2,5 @@
 
 redis-server &
 service neo4j start &
-start shiny-server &
+exec /usr/bin/shiny-server 2>&1
 
-(cd ./code/js/ &&
-whoami &&
-node index.js)

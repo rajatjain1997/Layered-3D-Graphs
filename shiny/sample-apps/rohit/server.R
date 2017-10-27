@@ -3,7 +3,7 @@ library(shiny)
 library("RNeo4j")
 
 function(input, output, session) {
-  neo4j.json <- rjson::fromJSON(file = "./../../../config/neo4j.json")
+  neo4j.json <- rjson::fromJSON(file = "/code/config/neo4j.json")
   graph=RNeo4j::startGraph(paste(substr(neo4j.json$bolt,8,nchar(neo4j.json$bolt)),":7474/db/data", sep=""), username=neo4j.json$username, password=neo4j.json$password)
 
   display <- ""
