@@ -54,8 +54,8 @@ RUN dpkg -i shiny-server-1.5.3.838-amd64.deb
 ADD ./config/shiny-server.conf /etc/shiny-server/shiny-server.conf
 
 ADD ./ ./code
-ADD ./bin/node.service ./etc/systemd/system
 RUN chown -R neo4j:adm /var/lib/neo4j
+RUN chown shiny.shiny /
 RUN npm --prefix ./code install ./code 
 RUN ["chmod", "+x", "./code/bin/initialize.sh"]
 
@@ -63,5 +63,3 @@ ENTRYPOINT ["/code/bin/initialize.sh"]
 
 EXPOSE 8000
 EXPOSE 4000
-EXPOSE 3000
-EXPOSE 7474
