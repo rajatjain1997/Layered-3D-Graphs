@@ -1,5 +1,5 @@
   
-[![Docker Build Statu](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/rajatjain1997/layered-3d-graphs)
+[![Docker Build Status](https://img.shields.io/docker/build/rajatjain1997/layered-3d-graphs.svg)](https://hub.docker.com/r/rajatjain1997/layered-3d-graphs)
 
 # Layered-3D-Graphs
 
