@@ -8,11 +8,11 @@ Layered-3D-Graphs plots 3D force directed and layered graphs on the basis of a *
 ## Quick Reference
 
  - **Where to file issues:**
-  - https://github.com/rajatjain1997/Layered-3D-Graphs/issues
+ 	- https://github.com/rajatjain1997/Layered-3D-Graphs/issues
 
 - **Maintained By:**
- - [Rajat Jain](https://github.com/rajatjain1997)
- - [Rohit Ghivdonde](https://github.com/RohitG28)
+	- [Rajat Jain](https://github.com/rajatjain1997)
+	- [Rohit Ghivdonde](https://github.com/RohitG28)
 
 ## Introduction
 
