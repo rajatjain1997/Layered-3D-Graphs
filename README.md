@@ -1,6 +1,18 @@
+  
+[![Docker Build Statu](https://img.shields.io/docker/build/jrottenberg/ffmpeg.svg)](https://hub.docker.com/r/rajatjain1997/layered-3d-graphs)
+
 # Layered-3D-Graphs
 
 Layered-3D-Graphs plots 3D force directed and layered graphs on the basis of a **pre-requisite of** relationship between nodes.
+
+## Quick Reference
+
+ - **Where to file issues:**
+https://github.com/rajatjain1997/Layered-3D-Graphs/issues
+
+- **Maintained By:**
+[Rajat Jain](https://github.com/rajatjain1997)
+[Rohit Ghivdonde](https://github.com/RohitG28)
 
 ## Introduction
 
