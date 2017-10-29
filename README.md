@@ -22,7 +22,11 @@ Layered-3D-Graphs can scale to huge datasets easily, with most of the time taken
 
 ## Installation
 
-Layered-3D-Graph is available as a docker image. The following are the ports used by the image:
+Layered-3D-Graph is available as a docker image. Pull the image from docker hub first by:
+
+	docker pull rajatjain1997/layered-3d-graphs
+
+The following are the ports used by the image:
 
 Container Port | Host Port | Task
 ---- | ---- | -------------------
@@ -34,7 +38,7 @@ To run the image, use:
 	docker run \
 		-p 4000:4000 -p 8000:8000 \
 		--volume=$HOME/Layered-3D-Graphs/data:/code/data \
-		--name=layered3dgraphs layered3dgraphs
+		--name=layered-3d-graphs layered-3d-graphs
 
 This binds the data volume of the container to the host machine to allow for easy input of data.
 
@@ -58,7 +62,7 @@ Layered-3D-Graphs has been tested with more than 30000 nodes and 70000 edges! It
 
 ## UI
 
-Once plotting is completed, Layered-3D-Graphs offers a simple web-interface which allows the user to search and plot the dependecies and parents of each node in the graph by either doing a **full test search** or by **clicking any node in the graph**. The results, once computed, are available in a sub-graph.
+Once plotting is completed, Layered-3D-Graphs offers a simple web-interface which allows the user to search and plot the dependencies and parents of each node in the graph by either doing a **full text search** or by **clicking any node in the graph**. The results, once computed, are available in a sub-graph.
 
 Both the graphs and the subgraphs are fully interactive and support the search functionality.
 
