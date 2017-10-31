@@ -11,6 +11,8 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 const port = config.get('server').port;
+const host = config.get('server').host;
+const shiny = config.get('server').plotter_mapping;
 
 //Defining Neo4J counters
 
@@ -54,7 +56,9 @@ app.get('/', function(req, res) {
 		if(!err) {
 			res.render('index', {
 				port: port,
-				data: data
+				data: data,
+				host: JSON.stringify({"host": host}),
+				shiny: shiny
 			});
 		}
 	});
@@ -134,5 +138,5 @@ io.on('connection', function(socket) {
 });
 
 server.listen(port, function() {
-  console.log('Server listening on http://localhost:' + port);
+  console.log('Server listening on http://' + host +':' + port);
 });

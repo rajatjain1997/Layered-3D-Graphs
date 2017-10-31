@@ -4,7 +4,7 @@ var loading_screen = pleaseWait({
   loadingHtml: "<div class='sk-wave'><div class='sk-rect sk-rect1'></div><div class='sk-rect sk-rect2'></div><div class='sk-rect sk-rect3'></div><div class='sk-rect sk-rect4'></div><div class='sk-rect sk-rect5'></div></div><p class='loading-message'>Starting Up!</p>"
 });
 
-var socket = io('http://localhost:'+port);
+var socket = io('http://' + host.host + ':'+ port);
 
 var simulation = d3_force.forceSimulation().numDimensions(3)
   .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(1))
@@ -107,7 +107,7 @@ simulation.on("end", function() {
 socket.on("neo4j", function(data, callback) {
   loading_screen.finish();
   callback();
-  window.location.href = "http://localhost:4000";
+  window.location.href = "http://" + host.host + ":" + shiny;
 });
 
 function isolate(force, nodes, filter) {

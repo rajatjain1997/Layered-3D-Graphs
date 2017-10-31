@@ -1,6 +1,18 @@
+  
+[![Docker Build Status](https://img.shields.io/docker/build/rajatjain1997/layered-3d-graphs.svg)](https://hub.docker.com/r/rajatjain1997/layered-3d-graphs)
+
 # Layered-3D-Graphs
 
 Layered-3D-Graphs plots 3D force directed and layered graphs on the basis of a **pre-requisite of** relationship between nodes.
+
+## Quick Reference
+
+ - **Where to file issues:**
+ 	- https://github.com/rajatjain1997/Layered-3D-Graphs/issues
+
+- **Maintained By:**
+	- [Rajat Jain](https://github.com/rajatjain1997)
+	- [Rohit Ghivdonde](https://github.com/RohitG28)
 
 ## Introduction
 
@@ -22,7 +34,7 @@ Layered-3D-Graphs can scale to huge datasets easily, with most of the time taken
 
 ## Installation
 
-Layered-3D-Graph is available as a docker image. Pull the image from docker hub first by:
+Layered-3D-Graphs is available as a docker image. Pull the image from docker hub first by:
 
 	docker pull rajatjain1997/layered-3d-graphs
 
@@ -41,6 +53,19 @@ To run the image, use:
 		--name=layered-3d-graphs layered-3d-graphs
 
 This binds the data volume of the container to the host machine to allow for easy input of data.
+
+## Configuration
+
+By default, Layered-3D-Graphs visualizations are only accessible through localhost. However, easy configuration options are provided to make it available on local or wide area networks.
+
+Configuration File | Option | Function | Default
+------------------ | ------ | -------- | -------
+server.json        | host   | IP of the application, set it to wherever Layered-3D-Graphs is to be hosted | localhost
+server.json        | plotter_mapping   | The port to which the plotter is mapped outside the container    | 4000
+
+For persistent configuration, you need to copy the `\code\config` directory on your local machine and bind it to a new instance of the container.
+
+**NOTE:** After configuration, the container needs to be restarted.
 
 ## Creating/Preparing Data
 
