@@ -57,7 +57,7 @@ app.get('/', function(req, res) {
 			res.render('index', {
 				port: port,
 				data: data,
-				host: host,
+				host: JSON.stringify({"host": host}),
 				shiny: shiny
 			});
 		}
