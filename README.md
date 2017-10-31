@@ -56,7 +56,7 @@ This binds the data volume of the container to the host machine to allow for eas
 
 ## Configuration
 
-By default, Layered-3D-Graphs visualizations are only accessible through localhost. However, easy configuration options are provided to make it available on local ore wide area networks.
+By default, Layered-3D-Graphs visualizations are only accessible through localhost. However, easy configuration options are provided to make it available on local or wide area networks.
 
 Configuration File | Option | Function | Default
 ------------------ | ------ | -------- | -------
