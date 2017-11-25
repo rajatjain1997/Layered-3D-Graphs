@@ -1,6 +1,5 @@
   
 [![Docker Build Status](https://img.shields.io/docker/build/rajatjain1997/layered-3d-graphs.svg)](https://hub.docker.com/r/rajatjain1997/layered-3d-graphs)
-
 [![GitHub license](https://img.shields.io/badge/license-AGPLv3-blue.svg)](https://raw.githubusercontent.com/rajatjain1997/Layered-3D-Graphs/master/LICENSE)
 
 # Layered-3D-Graphs
