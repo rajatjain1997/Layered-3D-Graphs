@@ -5,7 +5,7 @@ RUN apt-get update
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get -y install python-software-properties
 RUN apt-get -y install software-properties-common
-RUN apt-get -y install curl gnupg2
+RUN apt-get -y install curl gnupg2 git
 RUN add-apt-repository ppa:openjdk-r/ppa
 RUN apt-get update
 
@@ -31,10 +31,8 @@ RUN usr/bin/neo4j-admin set-initial-password neo
 
 
 #R#
-RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list
-RUN echo "deb http://ftp.iitm.ac.in/cran/bin/linux/ubuntu xenial/" >> /etc/apt/sources.list
-RUN gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-key E084DAB9
-RUN gpg -a --export E084DAB9 | apt-key add -
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
 RUN apt-get update
 RUN apt-get -y install r-base
 RUN apt-get -y install r-base-dev
