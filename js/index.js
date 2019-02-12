@@ -9,6 +9,7 @@ const redis = require('redis');
 const kue = require('kue');
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
+const force_direction = require('./force_direction');
 
 const port = config.get('server').port;
 const host = config.get('server').host;
@@ -56,7 +57,7 @@ app.get('/', function(req, res) {
 		if(!err) {
 			res.render('index', {
 				port: port,
-				data: data,
+				data: JSON.stringify({"data": data}),
 				host: JSON.stringify({"host": host}),
 				shiny: shiny
 			});
@@ -99,41 +100,56 @@ io.on('connection', function(socket) {
 			});
 	});
 
-	socket.on('/neo4j/reset', function(data) {
-		neoQueue.create('neo4j', {
-			request: "Match (n) detach delete n",
-			params: {}
-		}).priority(-15).removeOnComplete( true ).save();
-		nodesprocessed = 0;
-		edgesprocessed = 0;
-	});
-	socket.on('/neo4j/node', function(data) {
+	neoQueue.create('neo4j', {
+		request: "Match (n) detach delete n",
+		params: {}
+	}).priority(-15).removeOnComplete( true ).save();
+	nodesprocessed = 0;
+	edgesprocessed = 0;
 
-		neoQueue.create('neo4j', {
-			request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
-			params: data.node
-		}).attempts(5).removeOnComplete( true ).save();
-		nodesprocessed++;
-	});
-	socket.on('/neo4j/edge', function(data) {
-		var source = data.edge.source.id;
-		var target = data.edge.target.id;
-		neoQueue.create('neo4j', {
-			request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
-			params: {"source": source, "target": target}
-		}).attempts(5).removeOnComplete( true ).save();
-		edgesprocessed++;
-	});
-	socket.on('/neo4j/index', function(data) {
+	function neo4j_update(nodePos, edgePos) {
+		log("Queuing nodes to database");
+		for(var nodeitr = 0; nodeitr<nodePos.length; nodeitr++) {
+			neoQueue.create('neo4j', {
+				request: "CREATE (n:Node {x: $x, y:$y, z:$fz, id: $id, index: $index, name: $name})",
+				params: nodePos[nodeitr]
+			}).attempts(5).removeOnComplete( true ).save();
+			nodesprocessed++;
+		}
+
 		neoQueue.create('neo4j', {
 			request: "CREATE INDEX ON :Node(id)",
 			params: {}
 		}).removeOnComplete( true ).save();
-	});
-	socket.on('/neo4j/endtransmission', function(data) {
+
+		log("Queuing edges to database");
+		for(var edgeitr = 0; edgeitr< edgePos.length; edgeitr++) {
+			var source = edgePos[edgeitr].source.id;
+			var target = edgePos[edgeitr].target.id;
+			neoQueue.create('neo4j', {
+				request: "Match (m:Node {id: $source}), (n:Node {id: $target}) create (m)-[r:pre]->(n)",
+				params: {"source": source, "target": target}
+			}).attempts(5).removeOnComplete( true ).save();
+			edgesprocessed++;
+		}
+
 		neoQueue.create('neo4j', {
 			end: true
 		}).removeOnComplete( true ).attempts(50).save();
+
+	}
+
+	function log(msg) {
+		socket.emit('log', {"msg": msg});
+	}
+
+	socket.on('start', function(data) {
+		log("Reading Data");
+		fs.readFile("../data/"+data.data+".json", 'utf-8', function(error, graph) {
+			if (error) throw error;
+			log("Calculating Force Directed Layout");
+			force_direction.begin_simulation(JSON.parse(graph), neo4j_update);
+		});
 	});
 });
 
