@@ -50,7 +50,7 @@ To run the image, use:
 	docker run \
 		-p 4000:4000 -p 8000:8000 \
 		--volume=$HOME/Layered-3D-Graphs/data:/code/data \
-		--name=layered-3d-graphs layered-3d-graphs
+		--name=layered-3d-graphs rajatjain1997/layered-3d-graphs
 
 This binds the data volume of the container to the host machine to allow for easy input of data.
 
