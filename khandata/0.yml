@@ -119,12 +119,12 @@ Rates & proportional relationships:
 Statistics and probability:
   - Arithmetic operations
 # 8th Grade
-Data and modeling:
+Data and modeling: ######## Scatter Potting
   - Data and statistics
   - Fractions, decimals, & percentages
   - Negative numbers addition and subtraction
   - Negative numbers multiplication and division
-Geometric transformations:
+Geometric transformations: ######## Transforming Shapes
   - Geometry 5
   - Expressions, equations, & inequalities
 Geometry 6:
@@ -144,4 +144,257 @@ Solving equations with one unknown:
 Systems of equations:
   - Geometry 6
   - Solving equations with one unknown
-# 
+#Algebra
+Algebra foundations:
+  - Numbers and operations
+  - Expressions, equations, & inequalities
+Solving equations:
+  - Algebra foundations
+  - Linear equations and functions
+Solving inequalities:
+  - Algebra foundations
+  - Expressions, equations, & inequalities
+Working with units: ######## dimensional analysis
+  - Data and statistics
+Linear equations & graphs:
+  - Solving equations
+Functions:
+  - Algebra foundations
+  - Linear equations and functions
+Linear word problems:
+  - Linear equations & graphs
+Systems of equations 2:
+  - Algebra foundations
+  - Systems of equations
+Sequences:
+  - Linear word problems
+Inequalities (systems & graphs): ##### Properties of inequalities
+  - Solving inequalities
+  - Geometry 6
+Absolute value & piecewise functions:
+  - Functions
+Rational exponents & radicals:
+  - Algebra foundations
+  - Numbers and operations
+Exponential growth & decay: ###### Exponential fxns graphs
+  - Functions
+  - Rational exponents & radicals
+Polynomials:
+  - Linear word problems
+  - Systems of equations 2
+  - Solving equations
+Quadratics:
+  - Polynomials
+  - Rational exponents & radicals
+  - Absolute value & piecewise functions
+Factorization:
+  - Quadratics
+Irrational numbers: ###### Number types
+  - Rational exponents & radicals
+  - Solving equations
+# Algebra 2
+Functions 2: 
+  - Polynomials
+  - Absolute value & piecewise functions
+Complex numbers: #### Complex nos
+  - Solving equations
+Arithmetic with polynomials:  
+  - Factorization
+Polynomials 2:
+  - Arithmetic with polynomials
+  - Complex numbers
+Radical relationships: 
+  - Linear word problems
+  - Solving equations
+  - Systems of equations 2
+  - Rational exponents & radicals
+  - Absolute value & piecewise functions
+Rational relationships:
+  - Polynomials 2
+  - Radical relationships
+Exponential growth & decay 2: 
+  - Polynomials 2
+Exponentials & logarithms: ### Log table
+  - Functions 2
+Trigonometry:
+  - Functions 2
+Advanced equations & functions: ##### Composite functions
+  - Functions 2
+  - Polynomials 2
+Series:  ########### AP GP
+  - Sequences
+Modeling: #### Equations with roots and division
+  - Rational relationships
+  - Exponential growth & decay 2
+# HS Geometry
+Geometry foundations:
+  - Geometry 6
+  - Irrational numbers
+Transformations:
+  - Geometric transformations
+Congruence:
+  - Geometry foundations
+Similarity:
+  - Congruence
+Right triangles & trigonometry: ### Trikonmei
+  - Geometry foundations
+  - Trigonometry
+Solid geometry:
+  - Transformations
+Analytic geometry:
+  - Geometry foundations
+Circles:
+  - Analytic geometry
+# Trigonometry
+Trigonometry with right triangles:
+  - Right triangles & trigonometry
+  - Numbers and operations
+Trigonometry with general triangles:
+  - Trigonometry with right triangles
+The unit circle definition of sine, cosine, and tangent:
+  - Trigonometry
+  - Numbers and operations
+  - Irrational numbers
+Graphs of trigonometric functions:
+  - Functions 2
+  - The unit circle definition of sine, cosine, and tangent
+  - Trigonometry
+Trigonometric equations and identities:
+  - Trigonometry with general triangles
+  - Graphs of trigonometric functions
+# Statistics and Probability
+Analyzing categorical data:
+  - Data and statistics
+  - Numbers and operations
+Displaying and comparing quantitative data:
+  - Data and statistics
+  - Numbers and operations
+  - Statistics and probability
+Summarizing quantitative data:
+  - Data and statistics
+  - Numbers and operations
+  - Statistics and probability
+Modeling data distributions:
+  - Displaying and comparing quantitative data
+  - Summarizing quantitative data
+Exploring bivariate numerical data:
+  - Data and modeling
+  - Modeling data distributions
+Study design:
+  - Summarizing quantitative data
+Probability:
+  - Statistics and probability
+Counting, permutations, and combinations:
+  - Numbers and operations
+Random variables:
+  - Probability
+  - Counting, permutations, and combinations
+Sampling distributions:
+  - Exploring bivariate numerical data
+  - Random variables
+Confidence intervals:
+  - Exploring bivariate numerical data
+  - Random variables
+Significance tests (hypothesis testing):
+  - Confidence intervals
+  - Sampling distributions
+Two-sample inference for the difference between groups:
+  - Significance tests (hypothesis testing)
+Inference for categorical data (chi-square tests):
+  - Analyzing categorical data
+  - Significance tests (hypothesis testing)
+Advanced regression (inference and transforming):
+  - Advanced equations & functions
+  - Geometry foundations
+  - Summarizing quantitative data
+  - Random variables
+Analysis of variance (ANOVA):
+  - Random variables
+  - Modeling data distributions
+  - Significance tests (hypothesis testing)
+# Pre calculus
+Conic sections:
+  - Circles
+  - Solid geometry
+  - Right triangles & trigonometry
+Vectors:
+  - Complex numbers
+  - Trigonometry with general triangles
+  - Geometry foundations
+Matrices:
+  - Numbers and operations
+Vectors and matrices:
+  - Vectors
+  - Matrices
+Complex numbers 2:
+  - Complex numbers
+# Calculus 1
+Limits and continuity:
+  - Geometry foundations
+  - Numbers and operations
+  - Modeling
+  - Graphs of trigonometric functions
+  - Advanced equations & functions
+'Derivatives: definition and basic rules':
+  - Limits and continuity
+'Derivatives: chain rule and other advanced topics':
+  - 'Derivatives: definition and basic rules'
+  - Trigonometric equations and identities
+Applications of derivatives:
+  - 'Derivatives: definition and basic rules'
+Analyzing functions:
+  - Applications of derivatives
+Integrals:
+  - 'Derivatives: chain rule and other advanced topics'
+Differential equations:
+  - Integrals
+Applications of integrals:
+  - Integrals
+# Calculus 2
+Integrals review:
+  - Applications of integrals
+Integration techniques:
+  - Integrals review
+Differential equations 2:
+  - Differential equations
+  - Integration techniques
+Applications of integrals 2:
+  - Integration techniques
+Parametric equations, polar coordinates, and vector-valued functions:
+  - Vectors and matrices
+  - Conic sections
+  - Integration techniques
+Series 2:
+  - Series
+  - Integration techniques
+# Multivariable calculus
+Thinking about multivariable functions:
+  - Advanced equations & functions
+  - Solid geometry
+  - Numbers and operations
+  - Modeling
+Derivatives of multivariable functions:
+  - 'Derivatives: chain rule and other advanced topics'
+  - Analyzing functions
+  - Conic sections
+  - Series 2
+  - Thinking about multivariable functions
+Applications of multivariable derivatives:
+  - Derivatives of multivariable functions
+Integrating multivariable functions:
+  - Applications of multivariable derivatives
+  - Integration techniques
+Green's, Stokes', and the divergence theorems:
+  - Integrating multivariable functions
+# Differential eq
+Second order linear equations:
+  - Differential equations 2
+Laplace transform:
+  - Second order linear equations
+# Linear Algebra
+Vectors and spaces:
+  - Vectors and matrices
+Matrix transformations:
+  - Vectors and spaces
+Alternate coordinate systems (bases):
+  - Matrix transformations
