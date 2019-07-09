@@ -1,6 +1,6 @@
 {
 	"host": "localhost",
-	"plotter_mapping": 4000,
+	"plotter_address":"http://localhost:4000",
 	"port": 8000,
 	"kue": 3000
 }

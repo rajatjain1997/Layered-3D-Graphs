@@ -13,7 +13,7 @@ const force_direction = require('./force_direction');
 
 const port = config.get('server').port;
 const host = config.get('server').host;
-const shiny = config.get('server').plotter_mapping;
+const shiny = config.get('server').plotter_address;
 
 //Defining Neo4J counters
 
@@ -146,7 +146,10 @@ io.on('connection', function(socket) {
 	socket.on('start', function(data) {
 		log("Reading Data");
 		fs.readFile("../data/"+data.data+".json", 'utf-8', function(error, graph) {
-			if (error) throw error;
+			if (error) {
+				log("Data file unavailable :(");
+				return;
+			}
 			log("Calculating Force Directed Layout");
 			force_direction.begin_simulation(JSON.parse(graph), neo4j_update);
 		});

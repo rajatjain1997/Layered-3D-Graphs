@@ -15,7 +15,7 @@ socket.on('log', function(data) {
 socket.on("neo4j", function(data, callback) {
   loading_screen.finish();
   callback();
-  window.location.href = "http://" + host.host + ":" + shiny;
+  window.location.href = shiny;
 });
 
 function log(msg) {

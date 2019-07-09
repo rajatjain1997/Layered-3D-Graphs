@@ -61,7 +61,7 @@ By default, Layered-3D-Graphs visualizations are only accessible through localho
 Configuration File | Option | Function | Default
 ------------------ | ------ | -------- | -------
 server.json        | host   | IP of the application, set it to wherever Layered-3D-Graphs is to be hosted | localhost
-server.json        | plotter_mapping   | The port to which the plotter is mapped outside the container    | 4000
+server.json        | plotter_address   | The address at which the plotter is mapped outside the container    | http://localhost:4000
 
 For persistent configuration, you need to copy the `\code\config` directory on your local machine and bind it to a new instance of the container.
 
